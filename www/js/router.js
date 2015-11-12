@@ -9,8 +9,8 @@ uver.config(function($stateProvider, $urlRouterProvider) {
   .state('app.login', {
       cache: false,
       url: '/login',
-      controller: 'userCtrl',
-      templateUrl: 'templates/login.html'
+      controller: 'loginController',
+      templateUrl: 'app/login/login.html'
   })
   .state('app.spedizioni', {
     cache: false,
@@ -93,7 +93,7 @@ uver.config(function($stateProvider, $urlRouterProvider) {
   .state('app.profile', {
     cache: false,
     url: '/profile',
-    templateUrl: 'templates/profile.html',
+    templateUrl: 'app/profile/profile.html',
     controller: 'userCtrl'
   })
   .state('app.cancel', {

@@ -18,34 +18,6 @@ uver.controller('userCtrl', ['$scope', '$rootScope', '$location','serviceApi','$
           $location.path('/app/register');
       };
 
-
-      $scope.doLogin = function(userPassword,email){
-        var password_attempt = userPassword;
-         $http({method: 'GET', url: 'http://polettoweb.com/sximoapi?module=users', headers: {'Authorization': 'Basic '+'YXBwQHBvbGV0dG93ZWIuY29tOnB2aTNFei1EVVFWei1EdzNRYlEtVjk5Qkg'}}).then(function (response) {
-         if (response == '204') {
-           $scope.loginError = true;
-        }
-         else {
-           $scope.users = response;
-           console.log($scope.users.data.rows[0]);
-           localStorage.setItem("users",response);
-         } 
-       });
-      /*  var bcrypt = new bCrypt();
-  bcrypt.hashpw(password_attempt, bcrypt.gensalt(log_rounds=12), function (hashed) {
-      //var cipher = AES(SHA1(hashed));
-      // now you have your "secure" hash
-      console.log(hashed);*/
-      if ( TwinBcrypt.compareSync(password_attempt, "$2y$10$JhIsQC0fij701iKSiC.mk.tSHeOM6dbHjsvVf38uJmBh1eOTlSzxW")){
-   console.log("It matches");
-   $location.path('/app/profile');
- }
-else{
-    console.log("It doe's not matches");
-  }
-  //});
-          
-      };
       $scope.doRegister = function(){
           $scope.getDeliver();
       };
