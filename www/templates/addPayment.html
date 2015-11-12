@@ -1,0 +1,32 @@
+<ion-view title="Add payment">
+  <ion-nav-buttons side="right">
+    <button class="button-clear uver-nav-button camera" ng-click="doCamera()"></button>
+  </ion-nav-buttons>
+  <ion-content class="addPayment">
+     <div class="content">
+        <div class="list uver-form">
+          <label class="item item-input">
+            <i class="fa fa-check"></i>
+            <span class="input-label"><span class="uver-icon pe-7s-credit"></span></span>
+            <input type="text" placeholder="**** **** **** **88">
+          </label>
+          <label class="item item-input">
+            <i class="fa fa-check"></i>
+            <span class="input-label"><span class="uver-icon pe-7s-date"></span></span>
+            <input type="text" placeholder="08/08/18">
+          </label>
+          <label class="item item-input">
+            <i class="fa fa-check"></i>
+            <span class="input-label"><span class="uver-icon">CVV</span></span>
+            <input type="text" placeholder="188">
+          </label>
+        </div>
+        <br />
+        <br />
+        <button ng-click="addCard();" class="button uver-btn">Add card</button>
+        <button class="button button-block button-clear color-uver uver-text-clear">
+          Need help ?
+        </button>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,32 @@
+<ion-view title="Pickup to">
+  <ion-nav-buttons side="right">
+    <button class="button-clear uver-nav-button" ng-click="estimate()">
+        <span class="pe-7s-notebook"></span>
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="pickupTo">
+  <ion-scroll>
+    <div class="list pickup list-content">
+      <label class="item item-input">
+        <i class="pe-7s-search"></i>
+        <input class="uver-search-input" type="text" places-auto-complete types="['address']" on-place-changed="placePickupTo(place.to)" placeholder="Enter address" />
+        <i class="pe-7s-map-marker"></i>
+      </label>
+    </div>
+    <div map-lazy-load="http://maps.google.com/maps/api/js">
+      <map center="{{ place.to.formatted_address }}" zoom="15" style="height: 650px">
+        <info-window position="{{ place.to.formatted_address }}">
+           <div class="info-window" ng-click="estimate()">
+          {{ place.to.formatted_address }}
+           </div>
+        </info-window>
+      </map>
+    </div>
+    </ion-scroll>
+  </ion-content>
+  <div class="dot-container">
+    <span class="dot-ico"></span>
+    <span class="dot-ico active"></span>
+    <span class="dot-ico"></span>
+  </div>
+</ion-view>

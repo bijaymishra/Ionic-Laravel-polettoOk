@@ -1,0 +1,42 @@
+<ion-view title="Giacenza spedizione">
+  <ion-content class="register">
+     <div class="content">
+         <br />
+        <div class="list uver-form">
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-truck"></i>
+            <span class="input-label">Id Spedizione</span>
+            <input type="text" placeholder="Sped1" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-user"></i>
+            <span class="input-label">Nome firmatario</span>
+            <input type="text" placeholder="Doe">
+          </label>
+          <div class="list">
+     <label class="item item-input item-select" style="padding:0px">
+                    <div class="input-label">Stato
+                    </div>
+                    <select>
+                        <option selected>Merce danneggiata</option>
+                        <option >Non conforme</option>
+                        <option>Non richiesta</option>
+                    </select>
+                </label>
+              </div>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-check"></i>
+            <span class="x-ico"></span>
+            <span class="input-label">Note autista</span>
+            <textarea row="5" placeholder="Scrivi qui le tue note"></textarea>
+          </label>
+        </div>
+        <br />
+        <button ng-click="doRegister();" class="button uver-btn ion-camera" style="background: green">  Aggiungi foto</button>
+        <br />
+        <br />
+        <br />
+        <button ng-click="doRegister();" class="button uver-btn">Rifiuta</button>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,18 @@
+<ion-view title="Spedizioni">
+  <ion-content class="profile-content">
+      <ion-list>
+        <ion-item class="item-remove-animate item-icon-right" ng-click="view();">
+          <h2>Spedizion n. 1</h2>
+          <i class="icon ion-arrow-right-b"></i>
+          <ion-reorder-button class="ion-drag" on-reorder="move(note, $fromIndex, $toIndex)"></ion-reorder-button>
+          <ion-option-button class="button-balanced icon-left ion-happy-outline" ng-click="consegna()"> Consegna</ion-option-button>
+           <ion-option-button class="button-assertive icon-left ion-trash-b" ng-click="giacenza()"> Rifiuta</ion-option-button>
+        </ion-item>
+       
+      </ion-list>
+  </ion-content>
+  <div class="bar bar-footer bar-stable">
+ 	<a class="button button-balanced icon-left ion-happy-outline">Consegnate</a>
+ 	<a class="button button-assertive icon-left ion-trash-b">Rifiutate</a>
+ </div>
+</ion-view>

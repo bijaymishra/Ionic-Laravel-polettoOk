@@ -1,0 +1,58 @@
+<ion-view title="Dettagli ritiro">
+  <ion-content class="register">
+     <div class="content">
+         <br />
+        <div class="list uver-form">
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-user"></i>
+            <span class="input-label">Numero spedizione</span>
+            <input type="text" placeholder="Spedizione 1" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-industry"></i>
+            <span class="input-label">Ragione sociale mittente</span>
+            <input type="text" placeholder="Pinco Pallo srl" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-map"></i>
+            <span class="input-label">Inidirizzo mittente</span>
+            <input type="text" placeholder="via Curiel 11" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-building"></i>
+            <span class="input-label">Città</span>
+            <input type="text" placeholder="Bologna" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-globe"></i>
+            <span class="input-label">Provincia</span>
+            <input type="text" placeholder="BO" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-phone"></i>
+            <span class="input-label">Telefono</span>
+            <input type="text" placeholder="051 33112" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-cubes"></i>
+            <span class="input-label">Numero colli</span>
+            <input type="text" placeholder="4" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-pencil-square-o"></i>
+            <span class="input-label">Note</span>
+            <input type="text" placeholder="Prova a telefonare prima" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-check"></i>
+            <span class="input-label">Stato ritiro</span>
+            <input type="text" placeholder="DA EFFETTUARE" readonly>
+          </label>
+        </div>
+        <br />
+        <br />
+        <button ng-click="ritira();" class="button button-balanced">Ritira</button><button ng-click="rifiuta();" class="button button-assertive">Rifiuta</button>
+        
+    </div>
+  </ion-content>
+</ion-view>

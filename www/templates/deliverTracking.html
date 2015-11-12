@@ -1,0 +1,35 @@
+<ion-view title="Deliver tracking">
+  <ion-content class="deliverTracking">
+    <ion-scroll>
+      <div class="deliverTrackingText">
+          <i class="uver-flag-icon"></i>
+          <span class="place-name uver-text-deliver">{{ place.deliver.place }}</span>
+          <span class="distance uver-text-deliver">{{ place.deliver.long }}</span>
+      </div>
+      <div map-lazy-load="http://maps.google.com/maps/api/js">
+        <map center="{{ place.deliver.timePosition  }}" zoom="13" style="height: 625px">
+          <marker position="{{ place.deliver.placePosition }}" icon="img/flag3.png"></marker>
+          <marker id="time" position="{{ place.deliver.timePosition }}" icon="img/marker1.png"></marker>
+          <info-window visible-on-marker="time">
+             <div class="time-info">
+             {{ place.deliver.time }}
+             </div>
+          </info-window>
+        </map>
+      </div>
+    </ion-scroll>
+  </ion-content>
+  <ion-footer-bar align-title="left" class="footer-container">
+    <div class="call-deliver">
+      <button class="button button-clear button-block"> <i class="fa fa-phone"></i> Call</button>
+    </div>
+    <div class="name-deliver">
+      <button class="button button-clear button-block" ng-click="fuck()"> <i class="fa fa-user"></i> {{ place.deliver.name }}</button>
+    </div>
+    <div class="avatar-deliver" style="background-image: url({{ place.deliver.avatar }})"></div>
+    <div class="uver-button-cancel">
+      <button ng-click="cancel()" class="button button-assertive button-block">Cancel</button>
+    </div>
+  </ion-footer-bar>
+
+</ion-view>
