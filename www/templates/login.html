@@ -15,12 +15,12 @@
               <label class="item item-input item-stacked-label item-margin item-password">
                 <span class="input-label">Password</span>
                 <i class="fa fa-check"></i>
-                <input type="password" placeholder="******">
+                <input ng-model="userPassword" type="password" placeholder="******">
               </label>
           </div>
 
           <div class="list button-form-group text-center">
-              <button ng-click="doLogin();" class="button uver-btn">Login</button>
+              <button ng-click="doLogin(userPassword,email);" class="button uver-btn">Login</button>
               <div class="text-center color-uver or-text">
               </div>Password dimenticata</button>
           </div>
