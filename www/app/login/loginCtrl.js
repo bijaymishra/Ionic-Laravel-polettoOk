@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('uver').controller('loginController', ['$scope','$http','$state','$timeout','$ionicLoading','$ionicBackdrop','$ionicPopup','serviceApi','GENERAL_CONFIG',loginController]);
+    angular.module('uver').controller('loginController', ['$scope','$http','$state','$timeout','$ionicPopup','serviceApi','GENERAL_CONFIG',loginController]);
 
-    function loginController($scope,$http, $state,$timeout,$ionicLoading,$ionicBackdrop,$ionicPopup,serviceApi,GENERAL_CONFIG) {
+    function loginController($scope,$http,$state,$timeout,$ionicPopup,serviceApi,GENERAL_CONFIG) {
       serviceApi.getUsers()
       .then(function (response) {
          if (response == '204') {
@@ -29,26 +29,26 @@
 
    $scope.doLogin = function(userPassword,email){
        
-    $scope.show();
+     window.plugins.spinnerDialog.show("Trying to login","Please wait !!!", true);
       $scope.checkUser(userPassword,email);
   };
 
   $scope.checkUser = function(userPassword,email){
-  var password_attempt = userPassword;
+      var password_attempt = userPassword;
           $scope.loginUsers = _.filter($scope.userDetails, function(user) {
                     return TwinBcrypt.compareSync(password_attempt, user.password) && user.email == email ;
                 });
 
           if($scope.loginUsers.length==1){
             console.log("itsmatching");
-             setTimeout(function() {$scope.hide();
+             setTimeout(function() {window.plugins.spinnerDialog.hide();
              localStorage.setItem("currentUser",JSON.stringify($scope.loginUsers));
              $state.go('app.profile');
              }, 1000);
             
           }
           else{
-           setTimeout(function() {$scope.hide();
+           setTimeout(function() {window.plugins.spinnerDialog.hide();
             $scope.showAlert();
            }, 1000);
             console.log("its not matching");
