@@ -6,7 +6,7 @@
           </div>
           <div class="padding">
           <div class="padding">
-           <form name="loginForm" ng-submit="doLogin(userPassword,email);" novalidate> 
+           <form name="loginForm" ng-submit="doLogin(userPassword,email);$ionicBackdrop.retain();" novalidate> 
           <div class="list list-inset uver-form login-form">
               <label class="item item-input item-stacked-label">
                 <span class="input-label">Email</span>
@@ -16,7 +16,7 @@
               <label class="item item-input item-stacked-label item-margin item-password">
                 <span class="input-label">Password</span>
                 <i class="fa"ng-class="loginForm.$invalid ? 'fa-times' : 'fa-check'"></i>
-                <input ng-model="userPassword" type="password" placeholder="" required>
+                <input ng-model="userPassword" type="password" placeholder="******" required>
               </label>
           </div>
 

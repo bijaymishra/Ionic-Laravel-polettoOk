@@ -66,7 +66,7 @@ uver.config(function($stateProvider, $urlRouterProvider) {
     templateUrl: 'templates/addPayment.html',
     controller: 'userCtrl'
   })
-  .state('app.listaconseff', {
+  /*.state('app.listaconseff', {
     cache: false,
     url: '/listaconseff',
     templateUrl: 'templates/listaconseff.html',
@@ -89,7 +89,7 @@ uver.config(function($stateProvider, $urlRouterProvider) {
     url: '/listaritiriman',
     templateUrl: 'templates/listaritiriman.html',
     controller: 'userCtrl'
-  })
+  })*/
   .state('app.profile', {
     cache: false,
     url: '/profile',

@@ -85,12 +85,13 @@
             var deferred = $q.defer();
 
             busyCursorStart();
-
-            $http.get({
-                method: 'PUT',
+                $http(
+            {
+                method: 'get',
                 url: url,
-                headers: data
+                headers: {'Authorization': 'Basic YXBwQHBvbGV0dG93ZWIuY29tOnB2aTNFei1EVVFWei1EdzNRYlEtVjk5Qkg'}
             })
+          
                 .success(function (response) {
                     console.log(functionName + "Success");
 
@@ -193,12 +194,10 @@
             var url = GENERAL_CONFIG.API_URL + 'users';
 
             // Create data for API call 
-            var data = {"Authorization": "Basic" +  btoa("app@polettoweb.com:pvi3Ez-DUQVz-Dw3QbQ-V99BH") + '='};
+            //var data = {};
 
-            return doGetHttp("getUsers", url, data);
+            return doGetHttp("getUsers", url);
         }
-
-        //$http({method: 'GET', url: '/entity/'+id+'?access_token='+token, headers: {'Authorization': 'Bearer '+token}}).then(function(response){ }); 
 
     }
 })();
