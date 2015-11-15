@@ -29,7 +29,7 @@
 
    $scope.doLogin = function(userPassword,email){
        
-     window.plugins.spinnerDialog.show("Trying to login","Please wait !!!", true);
+     //window.plugins.spinnerDialog.show("Trying to login","Please wait !!!", true);
       $scope.checkUser(userPassword,email);
   };
 
@@ -41,14 +41,14 @@
 
           if($scope.loginUsers.length==1){
             console.log("itsmatching");
-             setTimeout(function() {window.plugins.spinnerDialog.hide();
+             setTimeout(function() {//window.plugins.spinnerDialog.hide();
              localStorage.setItem("currentUser",JSON.stringify($scope.loginUsers));
              $state.go('app.profile');
              }, 1000);
             
           }
           else{
-           setTimeout(function() {window.plugins.spinnerDialog.hide();
+           setTimeout(function() {//window.plugins.spinnerDialog.hide();
             $scope.showAlert();
            }, 1000);
             console.log("its not matching");

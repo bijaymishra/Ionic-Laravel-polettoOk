@@ -1,0 +1,91 @@
+<ion-view title="Dettagli spedizione">
+  <ion-content class="register">
+     <div class="content">
+         <br />
+        <div class="list uver-form">
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-user"></i>
+            <span class="input-label">Numero spedizione</span>
+            <input type="text" placeholder="{{spedizioniDetails.numero_spedizione}}" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-industry"></i>
+            <span class="input-label">Ragione sociale destinatario</span>
+            <input type="text" placeholder="{{spedizioniDetails.localita_dest}}" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-map"></i>
+            <span class="input-label">Inidirizzo Destinatario</span>
+            <input type="text" placeholder="{{spedizioniDetails.indirizzo_dest}}" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-building"></i>
+            <span class="input-label">Città</span>
+            <input type="text" placeholder="{{spedizioniDetails.numero_spedizione}}" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-globe"></i>
+            <span class="input-label">Provincia</span>
+            <input type="text" placeholder="{{spedizioniDetails.provincia_dest}}" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-phone"></i>
+            <span class="input-label">Telefono</span>
+            <input type="text" placeholder="{{spedizioniDetails.numero_spedizione}}" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-cubes"></i>
+            <span class="input-label">Numero colli</span>
+            <input type="text" placeholder="{{spedizioniDetails.colli}}" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-pencil-square-o"></i>
+            <span class="input-label">Note</span>
+            <input type="text" placeholder="{{spedizioniDetails.note}}" readonly>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <i class="fa fa-check"></i>
+            <span class="input-label">Stato spedizione</span>
+            <input type="text" placeholder="{{spedizioniDetails.numero_spedizione}}" readonly>
+          </label>
+        </div>
+        <br />
+        <br />
+        <button ng-click="consegna();" class="button button-balanced">Consegna</button><button ng-click="giacenza();" class="button button-assertive">Rifiuta</button>
+        
+    </div>
+  </ion-content>
+</ion-view>
+
+<!--
+$$hashKey: "object:10"
+anticipata: ""
+cap_dest: 35036
+cod_clie: 21441
+codice: "POLETTO"
+colli: 1
+contrassegno: 0
+created_at: "2015-10-20"
+data_rif_mitt: "0000-00-00"
+data_viagg: "2015-10-20"
+entry_by: 0
+id_spedizione: 3941
+id_stato_consegna: null
+id_stato_rifiuto: null
+indirizzo_dest: "VIA SCAVI 33"
+localita_dest: "MONTEGROTTO TERME"
+nazione_dest: "I"
+nome_autista: "ROBERTO"
+note: "SPONDA PALETTE : 1 MQ PALLET A RENDERE: 1"
+num_rif_corr: 2147483647
+num_rif_mitt: 0
+num_viaggio: "SRL15.015628"
+numero_spedizione: "SRL15.107781"
+palette: 1
+peso: 150
+provincia_dest: "PD"
+rag_soc_dest: "MARCO PILLON"
+rag_soc_mitt: "PALLETWAYS PER IRIS VIGNETI S.S."
+targa_mezzo: ""
+updated_at: "2015-10-20"
+volume: 1-->

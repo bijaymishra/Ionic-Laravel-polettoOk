@@ -185,6 +185,7 @@
         return {
             
             getUsers : getUsers,
+            getSpedizioni : getSpedizioni
             
             };
 
@@ -192,6 +193,16 @@
             console.log("calling Users");
 
             var url = GENERAL_CONFIG.API_URL + 'users';
+
+            // Create data for API call 
+            //var data = {};
+
+            return doGetHttp("getUsers", url);
+        };
+        function getSpedizioni() {
+            console.log("calling Users");
+
+            var url = GENERAL_CONFIG.API_URL + 'gestspediz';
 
             // Create data for API call 
             //var data = {};

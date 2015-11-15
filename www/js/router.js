@@ -13,10 +13,10 @@ uver.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'app/login/login.html'
   })
   .state('app.spedizioni', {
-    cache: false,
+    cache: true,
     url: '/spedizioni',
-    templateUrl: 'templates/spedizioni.html',
-    controller: 'userCtrl'
+    templateUrl: 'app/spedizioni/spedizioni.html',
+    controller: 'spedizioniCtrl'
   })
    .state('app.ritiri', {
     cache: false,
@@ -44,9 +44,9 @@ uver.config(function($stateProvider, $urlRouterProvider) {
   })
     .state('app.view', {
     cache: false,
-    url: '/view',
-    templateUrl: 'templates/view.html',
-    controller: 'userCtrl'
+    url: '/view/:spedizioniId',
+    templateUrl: 'app/spedizioni/view.html',
+    controller: 'spedizioniDetailsCtrl'
   })
     .state('app.consegna', {
     cache: false,
