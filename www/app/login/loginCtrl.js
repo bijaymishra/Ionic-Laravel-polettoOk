@@ -29,7 +29,7 @@
 
    $scope.doLogin = function(userPassword,email){
        
-     //window.plugins.spinnerDialog.show("Trying to login","Please wait !!!", true);
+     window.plugins.spinnerDialog.show("Trying to login","Please wait !!!", true);
       $scope.checkUser(userPassword,email);
   };
 
