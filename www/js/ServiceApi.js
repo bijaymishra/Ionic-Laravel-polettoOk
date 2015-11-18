@@ -185,7 +185,8 @@
         return {
             
             getUsers : getUsers,
-            getSpedizioni : getSpedizioni
+            getSpedizioni : getSpedizioni,
+            getStatus : getStatus
             
             };
 
@@ -209,6 +210,17 @@
 
             return doGetHttp("getUsers", url);
         }
+         function getStatus() {
+            console.log("calling Users");
+
+            var url = GENERAL_CONFIG.API_URL + 'statospedix';
+
+            // Create data for API call 
+            //var data = {};
+
+            return doGetHttp("getUsers", url);
+        }
+
 
     }
 })();

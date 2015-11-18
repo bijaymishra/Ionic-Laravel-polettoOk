@@ -41,13 +41,21 @@
       };
 
       //consegna implemantation
-
+  
+      
 
        $scope.giacenza = function(itemId){
          $location.path('/app/giacenza');
          spedizioni.find(itemId, function(spedizioniDetail) {
           $scope.spedizioniDetails = spedizioniDetail;
-          console.log($scope.spedizioniDetails);
+          serviceApi.getStatus()
+            .then(function (response) {
+          $scope.statusIds = response;
+            $scope.statusIds = JSON.stringify($scope.statusIds.rows);
+            console.log($scope.statusIds);
+       });
+         
+          
         });
       };
       $scope.consegna = function(itemId){

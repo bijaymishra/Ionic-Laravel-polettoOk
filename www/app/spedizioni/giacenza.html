@@ -18,9 +18,7 @@
                     <div class="input-label">Stato
                     </div>
                     <select>
-                        <option selected>Merce danneggiata</option>
-                        <option >Non conforme</option>
-                        <option>Non richiesta</option>
+                        <option selected ng-repeat="status in statusIds">{{statusIds.nome_stato}}</option>
                     </select>
                 </label>
               </div>
