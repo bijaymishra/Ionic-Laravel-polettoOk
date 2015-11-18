@@ -51,13 +51,13 @@ uver.config(function($stateProvider, $urlRouterProvider) {
     .state('app.consegna', {
     cache: false,
     url: '/consegna',
-    templateUrl: 'templates/consegna.html',
+    templateUrl: 'app/spedizioni/consegna.html',
     controller: 'userCtrl'
   })
     .state('app.giacenza', {
     cache: false,
     url: '/giacenza',
-    templateUrl: 'templates/giacenza.html',
+    templateUrl: 'app/spedizioni/giacenza.html',
     controller: 'userCtrl'
   })
   .state('app.addPayment', {

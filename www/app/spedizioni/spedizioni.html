@@ -12,8 +12,8 @@
 
           <i class="icon ion-arrow-right-b"></i>
           <ion-reorder-button class="ion-drag" on-reorder="move(note, $fromIndex, $toIndex)"></ion-reorder-button>
-          <ion-option-button class="button-balanced icon-left ion-happy-outline" ng-click="consegna()"> Consegna</ion-option-button>
-           <ion-option-button class="button-assertive icon-left ion-trash-b" ng-click="giacenza()"> Rifiuta</ion-option-button>
+          <ion-option-button class="button-balanced icon-left ion-happy-outline" ng-click="consegna(item.id_spedizione)"> Consegna</ion-option-button>
+          <ion-option-button class="button-assertive icon-left ion-trash-b" ng-click="giacenza(item.id_spedizione)"> Rifiuta</ion-option-button>
         </ion-item>
        
       </ion-list>

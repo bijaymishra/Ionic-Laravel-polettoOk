@@ -33,12 +33,7 @@ uver.controller('userCtrl', ['$scope', '$rootScope', '$location','serviceApi','$
       $scope.view = function(){
           $location.path('/app/view');
       };
-      $scope.giacenza = function(){
-          $location.path('/app/giacenza');
-      };
-      $scope.consegna = function(){
-          $location.path('/app/consegna');
-      };
+      
         $scope.ritira = function(){
           $location.path('/app/ritira');
       };

@@ -1,11 +1,13 @@
 (function () {
     'use strict';
 
-    angular.module('uver').controller('spedizioniCtrl', ['$scope','$http','$state','$timeout','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',spedizioniCtrl]);
+    angular.module('uver').controller('spedizioniCtrl', ['$scope','$location','$http','$state','$timeout','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',spedizioniCtrl]);
 
-    function spedizioniCtrl($scope,$http, $state, $timeout,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
+    function spedizioniCtrl($scope,$location,$http, $state, $timeout,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
     	
-
+        $scope.currentuser = localStorage.getItem('users');
+          $scope.currentuser = JSON.parse($scope.currentuser);
+          console.log($scope.currentuser);
 
        $scope.getSpediZioniDB = function() {
  
@@ -32,11 +34,28 @@
       $scope.$broadcast('scroll.refreshComplete');
     }, 1250);
   };
- 
   
   $scope.view = function(itemId){
     var result ={spedizioniId:itemId};
           $state.go('app.view',result);
+      };
+
+      //consegna implemantation
+
+
+       $scope.giacenza = function(itemId){
+         $location.path('/app/giacenza');
+         spedizioni.find(itemId, function(spedizioniDetail) {
+          $scope.spedizioniDetails = spedizioniDetail;
+          console.log($scope.spedizioniDetails);
+        });
+      };
+      $scope.consegna = function(itemId){
+          $location.path('/app/consegna');
+          spedizioni.find(itemId, function(spedizioniDetail) {
+          $scope.spedizioniDetails = spedizioniDetail;
+          console.log($scope.spedizioniDetails);
+        });
       };
           
   
