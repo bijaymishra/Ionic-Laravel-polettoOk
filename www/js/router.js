@@ -49,16 +49,16 @@ uver.config(function($stateProvider, $urlRouterProvider) {
     controller: 'spedizioniDetailsCtrl'
   })
     .state('app.consegna', {
-    cache: false,
+    cache: true,
     url: '/consegna',
-    templateUrl: 'app/spedizioni/consegna.html',
-    controller: 'spedizioniCtrl'
+    templateUrl: 'app/spedizioni/consegna.html'
+    
   })
     .state('app.giacenza', {
-    cache: false,
+    cache: true,
     url: '/giacenza',
-    templateUrl: 'app/spedizioni/giacenza.html',
-    controller: 'spedizioniCtrl'
+    templateUrl: 'app/spedizioni/giacenza.html'
+    
   })
   .state('app.addPayment', {
     cache: false,
