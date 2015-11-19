@@ -18,9 +18,13 @@
      <label class="item item-input item-select" style="padding:0px">
                     <div class="input-label">Stato
                     </div>
-                    <select ng-model="statusSelect">
-      <option ng-repeat="item in statusIds" value="{{item.id_stato}}">{{item.nome_stato}}</option>
-                    </select>
+                    <!--select  ng-init="statusSelect='1'" ng-model="statusSelect">
+      <option ng-repeat="item in statusIds.rows" value="item.id_stato">{{item.nome_stato}}</option>
+                    </select-->
+                    <select ng-model="statusSelect" required="required"
+  options="option.value as option.name for option in statusIds" >
+    <option style="display:none" value="">select a status</option>
+</select>
                 </label>
               </div>
           <label class="item item-input item-stacked-label">

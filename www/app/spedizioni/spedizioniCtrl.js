@@ -47,23 +47,20 @@
        $scope.giacenza = function(itemId){
          spedizioni.find(itemId, function(spedizioniDetail) {
           $scope.spedizioniDetails = spedizioniDetail;
-          serviceApi.getStatus()
+          $scope.statusIds =  [
+    { name: 'Feature', value: 'feature' }, 
+    { name: 'Bug', value: 'bug' }, 
+    { name: 'Enhancement', value: 'enhancement' }
+    ];
+    console.log($scope.statusIds);
+          /*serviceApi.getStatus()
             .then(function (response) {
-          //$scope.statusIds = response;
-            $scope.statusIds = [{
-  id: 1,
-  label: 'aLabel',
-  subItem: { name: 'aSubItem' }
-}, {
-  id: 2,
-  label: 'bLabel',
-  subItem: { name: 'bSubItem' }
-}];
-            console.log($scope.statusIds);
-            $location.path('/app/giacenza');
+            
+            
+            
 
-                   });
-         
+                   });*/
+         $location.path('/app/giacenza');
           
         });
       };
