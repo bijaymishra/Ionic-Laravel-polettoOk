@@ -57,8 +57,8 @@ uver.config(function($stateProvider, $urlRouterProvider) {
     .state('app.giacenza', {
     cache: true,
     url: '/giacenza',
-    templateUrl: 'app/spedizioni/giacenza.html'
-    
+    templateUrl: 'app/spedizioni/giacenza.html',
+    controller: 'giacenzaCtrl'
   })
   .state('app.addPayment', {
     cache: false,

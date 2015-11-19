@@ -2,7 +2,7 @@
   <ion-content class="register">
      <div class="content">
          <br />
-         <form name="gicenzaform">
+         
         <div class="list uver-form">
           <label class="item item-input item-stacked-label">
             <i class="fa fa-truck"></i>
@@ -18,12 +18,14 @@
      <label class="item item-input item-select" style="padding:0px">
                     <div class="input-label">Stato
                     </div>
-                    <!--select  ng-init="statusSelect='1'" ng-model="statusSelect">
-      <option ng-repeat="item in statusIds.rows" value="item.id_stato">{{item.nome_stato}}</option>
-                    </select-->
-                    <select ng-model="statusSelect" required="required"
-  options="option.value as option.name for option in statusIds" >
+
+                    <!--select ng-model="statusSelect" required="required"
+  ng-options="options.id_stato as options.nomo_stato for options in statusIds" >
     <option style="display:none" value="">select a status</option>
+</select-->
+<select ng-model="statusSelect">
+  <option style="display:none" value="" >select a status</option>
+<option ng-repeat = "options in statusIds track by $index" value={{options.id_stato}}>{{options.nome_stato}}</option>
 </select>
                 </label>
               </div>
@@ -34,7 +36,7 @@
             <textarea row="5" placeholder="Scrivi qui le tue note"></textarea>
           </label>
         </div>
-      </form>
+      
         <br />
         <button ng-click="doRegister();" class="button uver-btn ion-camera" style="background: green">  Aggiungi foto</button>
         <br />
