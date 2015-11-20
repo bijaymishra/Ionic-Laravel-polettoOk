@@ -1,10 +1,10 @@
 (function () {
     'use strict';
 
-    angular.module('uver').controller('giacenzaCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',giacenzaCtrl]);
+    angular.module('uver').controller('giacenzaCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',giacenzaCtrl]);
 
-    function giacenzaCtrl($scope,$rootScope,$location,$http, $state, $timeout,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
-    	
+    function giacenzaCtrl($scope,$rootScope,$location,$http, $state, $timeout,$cordovaCamera,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
+    	 $scope.picAllow = true;
         $scope.currentuser = localStorage.getItem('users');
           $scope.currentuser = JSON.parse($scope.currentuser);
           console.log($scope.currentuser);
@@ -29,6 +29,81 @@
         return Date.now() - start
     }
 })();
+        
+$scope.images = [];
+      //Cmaera Plugin implementation
+      $scope.urlForImage = function(imageName) {
+        var name = imageName.substr(imageName.lastIndexOf('/') + 1);
+        var trueOrigin = cordova.file.dataDirectory + name;
+        return trueOrigin;
+      }
+$scope.addImage = function() {
+ // 2
+ var options = {
+ destinationType : Camera.DestinationType.FILE_URI,
+ sourceType : Camera.PictureSourceType.CAMERA, // Camera.PictureSourceType.PHOTOLIBRARY
+ allowEdit : false,
+ encodingType: Camera.EncodingType.JPEG,
+ popoverOptions: CameraPopoverOptions,
+ };
+ 
+        $cordovaCamera.getPicture(options).then(function(imageData) {
+
+          if($scope.images.length<3){
+            alert($scope.picAllow +"---"+$scope.images.length);
+          onImageSuccess(imageData);
+
+          function onImageSuccess(fileURI) {
+           createFileEntry(fileURI);
+           }
+            function createFileEntry(fileURI) {
+          window.resolveLocalFileSystemURL(fileURI, copyFile, fail);
+            }
+
+           function copyFile(fileEntry) {
+             var name = fileEntry.fullPath.substr(fileEntry.fullPath.lastIndexOf('/') + 1);
+             var newName = makeid() + name;
+             
+             window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(fileSystem2) {
+             fileEntry.copyTo(
+             fileSystem2,
+             newName,
+             onCopySuccess,
+             fail
+             );
+             },
+             fail);
+             }
+             function onCopySuccess(entry) {
+ $scope.$apply(function () {
+ $scope.images.push(entry.nativeURL);
+ });
+ }
+ 
+ function fail(error) {
+ console.log("fail: " + error.code);
+ }
+ 
+ function makeid() {
+ var text = "";
+ var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+ 
+ for (var i=0; i < 5; i++) {
+ text += possible.charAt(Math.floor(Math.random() * possible.length));
+ }
+ return text;
+ }
+ }else{
+  $scope.picAllow = false;
+  alert("Max three pics can be inserted.");
+ }
+ }, function(err) {
+ console.log(err);
+ });
+}
+       
+
+
 
 
         $scope.rejectShipping = function(){
@@ -41,11 +116,12 @@
             "entry_by": $scope.currentuser.id,
             "lat": "",
             "long": "",
+            "foto":$scope.images,
             "id_stato_consegna":$scope.giacenza.statusSelect,
             "note_cs_autista": $scope.giacenza.note,
 
           };
-          console.log(formData);
+          console.log($scope.images);
 
         }
       $scope.consegna = function(itemId){

@@ -37,8 +37,15 @@
           </label>
         </div>
         <br />
-        <button ng-click="doRegister();" class="button uver-btn ion-camera" style="background: green">  Aggiungi foto</button>
+        <button ng-click="addImage()" class="button uver-btn ion-camera" style="background: green">  Aggiungi foto</button>
         <br />
+        <ion-scroll class="imageThumb">
+        <ion-list>
+        <ion-item class="item item-avatar item-thumbnail-left" ng-repeat="image in images" >  
+          <img  class="clearImg" ng-src="{{urlForImage(image)}}">                
+        </ion-item>
+      </ion-list>
+     </ion-scroll>
         <br />
         <br />
         <button type="submit" class="button uver-btn">Rifiuta</button>
