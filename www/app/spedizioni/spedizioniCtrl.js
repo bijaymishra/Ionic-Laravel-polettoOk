@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('uver').controller('spedizioniCtrl', ['$scope','$location','$http','$state','$timeout','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',spedizioniCtrl]);
+    angular.module('uver').controller('spedizioniCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',spedizioniCtrl]);
 
-    function spedizioniCtrl($scope,$location,$http, $state, $timeout,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
+    function spedizioniCtrl($scope,$rootScope,$location,$http, $state, $timeout,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
     	
         $scope.currentuser = localStorage.getItem('users');
           $scope.currentuser = JSON.parse($scope.currentuser);
@@ -45,6 +45,9 @@
       
 
        $scope.giacenza = function(itemId){
+        spedizioni.find(itemId, function(spedizioniDetail) {
+          $rootScope.spedizioniID = spedizioniDetail.id_spedizione;
+          });
                  $location.path('/app/giacenza');
           
         

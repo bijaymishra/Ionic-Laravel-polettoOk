@@ -2,17 +2,17 @@
   <ion-content class="register">
      <div class="content">
          <br />
-         
+        <form name="giacenzaData" role="form" ng-submit="rejectShipping();">
         <div class="list uver-form">
           <label class="item item-input item-stacked-label">
             <i class="fa fa-truck"></i>
             <span class="input-label">Id Spedizione</span>
-            <input type="text" placeholder="Sped1" readonly>
+            <input type="text" placeholder="{{spedizioniID}}" readonly>
           </label>
           <label class="item item-input item-stacked-label">
             <i class="fa fa-user"></i>
             <span class="input-label">Nome firmatario</span>
-            <input type="text" placeholder="Doe">
+            <input type="text" ng-model="giacenza.signer" placeholder="Doe">
           </label>
           <div class="list">
      <label class="item item-input item-select" style="padding:0px">
@@ -23,7 +23,7 @@
   ng-options="options.id_stato as options.nomo_stato for options in statusIds" >
     <option style="display:none" value="">select a status</option>
 </select-->
-<select ng-model="statusSelect">
+<select ng-model="giacenza.statusSelect">
   <option style="display:none" value="" >select a status</option>
 <option ng-repeat = "options in statusIds track by $index" value={{options.id_stato}}>{{options.nome_stato}}</option>
 </select>
@@ -33,16 +33,16 @@
             <i class="fa fa-check"></i>
             <span class="x-ico"></span>
             <span class="input-label">Note autista</span>
-            <textarea row="5" placeholder="Scrivi qui le tue note"></textarea>
+            <textarea row="5" ng-model="giacenza.note" placeholder="Scrivi qui le tue note"></textarea>
           </label>
         </div>
-      
         <br />
         <button ng-click="doRegister();" class="button uver-btn ion-camera" style="background: green">  Aggiungi foto</button>
         <br />
         <br />
         <br />
-        <button ng-click="doRegister();" class="button uver-btn">Rifiuta</button>
+        <button type="submit" class="button uver-btn">Rifiuta</button>
+        </form>
     </div>
   </ion-content>
 </ion-view>

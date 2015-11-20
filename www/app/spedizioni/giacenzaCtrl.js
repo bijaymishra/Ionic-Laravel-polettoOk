@@ -1,13 +1,14 @@
 (function () {
     'use strict';
 
-    angular.module('uver').controller('giacenzaCtrl', ['$scope','$location','$http','$state','$timeout','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',giacenzaCtrl]);
+    angular.module('uver').controller('giacenzaCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',giacenzaCtrl]);
 
-    function giacenzaCtrl($scope,$location,$http, $state, $timeout,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
+    function giacenzaCtrl($scope,$rootScope,$location,$http, $state, $timeout,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
     	
         $scope.currentuser = localStorage.getItem('users');
           $scope.currentuser = JSON.parse($scope.currentuser);
           console.log($scope.currentuser);
+
 
       //consegna implemantation
       //serviceApi.getStatus()
@@ -17,6 +18,36 @@
             //$scope.statusIds = JSON.stringify($scope.statusIds.rows);
             console.log($scope.statusIds);
           //  });
+        $scope.giacenza ={
+          signer:'',
+          statusSelect:'',
+          note:''
+        } ;
+        var relativeTime = (function () {
+    var start = Date.now();
+    return function () {
+        return Date.now() - start
+    }
+})();
+
+
+        $scope.rejectShipping = function(){
+
+          var formData = {
+            "id_spedizione": $rootScope.spedizioniID,
+            "id_consegna":"2457",
+            "nome_firmatario":$scope.giacenza.signer,
+            "created_at":relativeTime(),
+            "entry_by": $scope.currentuser.id,
+            "lat": "",
+            "long": "",
+            "id_stato_consegna":$scope.giacenza.statusSelect,
+            "note_cs_autista": $scope.giacenza.note,
+
+          };
+          console.log(formData);
+
+        }
       $scope.consegna = function(itemId){
           $location.path('/app/consegna');
           spedizioni.find(itemId, function(spedizioniDetail) {
