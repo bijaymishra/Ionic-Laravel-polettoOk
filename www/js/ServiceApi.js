@@ -146,6 +146,7 @@
 			{
 			    method: 'PUT',
 			    url: url,
+                headers: {'Authorization': 'Basic YXBwQHBvbGV0dG93ZWIuY29tOnB2aTNFei1EVVFWei1EdzNRYlEtVjk5Qkg'},
 			    data: data
 			})
 			.success(function (response, status) {
@@ -186,14 +187,16 @@
             
             getUsers : getUsers,
             getSpedizioni : getSpedizioni,
-            getStatus : getStatus
+            getStatus : getStatus,
+            gicenzaCTRL : gicenzaCTRL,
+            consegnaCtrl : consegnaCtrl
             
             };
 
             function getUsers() {
             console.log("calling Users");
 
-            var url = GENERAL_CONFIG.API_URL + 'users';
+            var url = GENERAL_CONFIG.API_URL + 'sximoapi?module=users';
 
             // Create data for API call 
             //var data = {};
@@ -203,7 +206,7 @@
         function getSpedizioni() {
             console.log("calling Users");
 
-            var url = GENERAL_CONFIG.API_URL + 'gestspediz';
+            var url = GENERAL_CONFIG.API_URL + 'sximoapi?module=gestspediz';
 
             // Create data for API call 
             //var data = {};
@@ -213,12 +216,26 @@
          function getStatus() {
             console.log("calling Users");
 
-            var url = GENERAL_CONFIG.API_URL + 'statospedix';
+            var url = GENERAL_CONFIG.API_URL + 'sximoapi?module=statospedix';
 
             // Create data for API call 
             //var data = {};
 
             return doGetHttp("getUsers", url);
+        }
+         function gicenzaCTRL(data) {
+            var url = GENERAL_CONFIG.API_URL + 'sximoapi/id/?module=mancateconsegne'
+
+            // Create data for API call 
+            var data = {data:data};
+            return doPutHttpWithData(data, url, "signUpCTRL");
+        }
+         function consegnaCtrl(data) {
+            var url = GENERAL_CONFIG.API_URL + 'sximoapi/id?module=effettuateconsegne'
+
+            // Create data for API call 
+            var data = {data:data};
+            return doPutHttpWithData(data, url, "signUpCTRL");
         }
 
 

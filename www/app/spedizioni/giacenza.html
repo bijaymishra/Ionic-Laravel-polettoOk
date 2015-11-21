@@ -2,7 +2,7 @@
   <ion-content class="register">
      <div class="content">
          <br />
-        <form name="giacenzaData" role="form" ng-submit="rejectShipping();">
+        <form name="giacenzaData" role="form">
         <div class="list uver-form">
           <label class="item item-input item-stacked-label">
             <i class="fa fa-truck"></i>
@@ -48,7 +48,7 @@
      </ion-scroll>
         <br />
         <br />
-        <button type="submit" class="button uver-btn">Rifiuta</button>
+        <button type="submit" ng-click="rejectShipping();" class="button uver-btn">Rifiuta</button>
         </form>
     </div>
   </ion-content>

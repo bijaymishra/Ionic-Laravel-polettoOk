@@ -14,7 +14,7 @@
             'API_VERSION': '1',
             'GA_enabled' : false,
             'API_USING': 'production',
-            'API_URL': 'http://polettoweb.com/sximoapi?module=',
+            'API_URL': 'http://polettoweb.com/',
             
     }
   }

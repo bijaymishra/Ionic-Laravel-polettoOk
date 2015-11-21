@@ -1,9 +1,9 @@
 (function () {
     //'use strict';
 
-    angular.module('uver').controller('giacenzaCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',giacenzaCtrl]);
+    angular.module('uver').controller('consegnaCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',giacenzaCtrl]);
 
-    function giacenzaCtrl($scope,$rootScope,$location,$http, $state, $timeout,$cordovaCamera,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
+    function consegnaCtrl($scope,$rootScope,$location,$http, $state, $timeout,$cordovaCamera,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
     	 $scope.picAllow = true;
         $scope.currentuser = localStorage.getItem('users');
           $scope.currentuser = JSON.parse($scope.currentuser);
@@ -105,7 +105,7 @@ $scope.addImage = function() {
 
 
 
-        $scope.rejectShipping = function(){
+        $scope.deliverShipping = function(){
 
           var formData = {
             "id_spedizione": $rootScope.spedizioniID,
@@ -124,7 +124,7 @@ $scope.addImage = function() {
           };
           console.log($scope.images);
 
-          serviceApi.gicenzaCTRL(formData)
+          serviceApi.consegnaCTRL(formData)
       .then(function (response) {
           if (response == '204') {
             alert("please check your internet connection");

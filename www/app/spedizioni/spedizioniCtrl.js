@@ -53,10 +53,11 @@
         
       };
       $scope.consegna = function(itemId){
-          $location.path('/app/consegna');
           spedizioni.find(itemId, function(spedizioniDetail) {
-          $scope.spedizioniDetails = spedizioniDetail;
-          console.log($scope.spedizioniDetails);
+          $rootScope.spedizioniID = spedizioniDetail.id_spedizione;
+          });
+                 $location.path('/app/giacenza');
+          
         });
       };
           

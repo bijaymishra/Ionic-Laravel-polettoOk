@@ -22,7 +22,9 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "com.ionic.keyboard",
-    "hu.dpal.phonegap.plugins.spinnerdialog"
+    "hu.dpal.phonegap.plugins.spinnerdialog",
+    "cordova-plugin-camera",
+    "cordova-plugin-file"
   ],
   "cordovaPlatforms": [
     "android"
