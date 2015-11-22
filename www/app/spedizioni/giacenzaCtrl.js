@@ -50,7 +50,7 @@ $scope.addImage = function() {
         $cordovaCamera.getPicture(options).then(function(imageData) {
 
           if($scope.images.length<3){
-            alert($scope.picAllow +"---"+$scope.images.length);
+            
           onImageSuccess(imageData);
 
           function onImageSuccess(fileURI) {
