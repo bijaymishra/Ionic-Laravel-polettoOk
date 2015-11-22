@@ -56,9 +56,9 @@
           spedizioni.find(itemId, function(spedizioniDetail) {
           $rootScope.spedizioniID = spedizioniDetail.id_spedizione;
           });
-                 $location.path('/app/giacenza');
+                 $location.path('/app/consegna');
           
-        });
+        
       };
           
   

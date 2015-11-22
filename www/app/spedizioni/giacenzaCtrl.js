@@ -130,11 +130,11 @@ $scope.addImage = function() {
             alert("please check your internet connection");
           }
           else {
-            alert(response.data);
+            alert("La spedizione è stata rifiutata");
           }
         },
         function (err) {
-          console.log("error in signup");
+          alert("Something not right please try again!!!");
       
         });
         }

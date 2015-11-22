@@ -51,8 +51,8 @@ uver.config(function($stateProvider, $urlRouterProvider) {
     .state('app.consegna', {
     cache: true,
     url: '/consegna',
-    templateUrl: 'app/spedizioni/consegna.html'
-    
+    templateUrl: 'app/spedizioni/consegna.html',
+    controller: 'consegnaCtrl'
   })
     .state('app.giacenza', {
     cache: true,

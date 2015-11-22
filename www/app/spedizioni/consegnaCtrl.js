@@ -1,7 +1,7 @@
 (function () {
     //'use strict';
 
-    angular.module('uver').controller('consegnaCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',giacenzaCtrl]);
+    angular.module('uver').controller('consegnaCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',consegnaCtrl]);
 
     function consegnaCtrl($scope,$rootScope,$location,$http, $state, $timeout,$cordovaCamera,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
     	 $scope.picAllow = true;
@@ -124,17 +124,17 @@ $scope.addImage = function() {
           };
           console.log($scope.images);
 
-          serviceApi.consegnaCTRL(formData)
+          serviceApi.consegnaCtrl(formData)
       .then(function (response) {
           if (response == '204') {
             alert("please check your internet connection");
           }
           else {
-            alert(response.data);
+            alert("La spedizione è stata correttamente consegnata");
           }
         },
         function (err) {
-          console.log("error in signup");
+          alert("Something not right please try again!!!");
       
         });
         }

@@ -2,41 +2,45 @@
   <ion-content class="register">
      <div class="content">
          <br />
+         <form name="giacenzaData" role="form">
         <div class="list uver-form">
           <label class="item item-input item-stacked-label">
             <i class="fa fa-truck"></i>
             <span class="input-label">Id Spedizione</span>
-            <input type="text" placeholder="Sped1" readonly>
+            <input type="text" placeholder="{{spedizioniID}}" readonly>
           </label>
           <label class="item item-input item-stacked-label">
             <i class="fa fa-user"></i>
             <span class="input-label">Nome firmatario</span>
-            <input type="text" placeholder="Doe">
+            <input type="text" ng-model="giacenza.signer" placeholder="Doe">
           </label>
           <div class="list">
      <label class="item item-input item-select" style="padding:0px">
                     <div class="input-label">Stato
                     </div>
-                    <select>
-                        <option selected>Consegnata con riserva</option>
-                        <option >Consegnata</option>
-                        <option>Consegnata parizialmente</option>
-                    </select>
+                   <select ng-model="giacenza.statusSelect">
+  <option style="display:none" value="" >select a status</option>
+<option ng-repeat = "options in statusIds track by $index" value={{options.id_stato}}>{{options.nome_stato}}</option>
+</select>
                 </label>
               </div>
           <label class="item item-input item-stacked-label">
             <i class="fa fa-check"></i>
             <span class="x-ico"></span>
             <span class="input-label">Note autista</span>
-            <textarea row="5" placeholder="Scrivi qui le tue note"></textarea>
+            <textarea row="5" ng-model="giacenza.note" placeholder="Scrivi qui le tue note"></textarea>
           </label>
         </div>
         <br />
-        <button ng-click="doRegister();" class="button uver-btn ion-camera" style="background: green">  Aggiungi foto</button>
+        <button ng-click="addImage()" class="button uver-btn ion-camera" style="background: green">  Aggiungi foto</button>
+        <br />
+         <ion-item class="item item-avatar item-thumbnail-left" ng-repeat="image in images" >  
+          <img  class="clearImg" ng-src="{{urlForImage(image)}}">                
+        </ion-item>
         <br />
         <br />
-        <br />
-        <button ng-click="doRegister();" class="button uver-btn">Consegna</button>
+        <button type="submit" ng-click="deliverShipping();" class="button uver-btn">Consegna</button>
+      </form>
     </div>
   </ion-content>
 </ion-view>
