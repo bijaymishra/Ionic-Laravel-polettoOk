@@ -23,12 +23,13 @@
           statusSelect:'',
           note:''
         } ;
-        var relativeTime = (function () {
-    var start = Date.now();
-    return function () {
-        return Date.now() - start
-    }
-})();
+        function getTimeStamp() {
+       var now = new Date();
+       return ((now.getMonth() + 1) + '-' + (now.getDate()) + '-' + now.getFullYear() + " " + now.getHours() + ':'
+                     + ((now.getMinutes() < 10) ? ("0" + now.getMinutes()) : (now.getMinutes())) + ':' + ((now.getSeconds() < 10) ? ("0" + now
+                     .getSeconds()) : (now.getSeconds())));
+}
+        
         //Cmaera Plugin implementation
 $scope.images = [];
       
@@ -116,7 +117,7 @@ $scope.addImage = function() {
             "id_spedizione": $rootScope.spedizioniID,
             "id_consegna":"",
             "nome_firmatario":$scope.giacenza.signer,
-            "created_at":relativeTime(),
+            "created_at":getTimeStamp(),
             "entry_by": $scope.currentuser.id,
             "lat": $rootScope.Latitude,
             "long": $rootScope.longitude,
