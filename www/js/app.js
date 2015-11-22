@@ -8,7 +8,7 @@ uver.config(function (CacheFactoryProvider) {
     angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });
   });
 
-uver.run(function($ionicPlatform,CacheFactory) {
+uver.run(function($rootScope,$ionicPlatform,CacheFactory,geolocationService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -18,5 +18,10 @@ uver.run(function($ionicPlatform,CacheFactory) {
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+    geolocationService().then(function(position) {
+                console.log(position.coords.longitude);
+                $rootScope.Latitude = position.coords.latitude;
+                $rootScope.longitude = position.coords.longitude;
+              });
   });
 })

@@ -106,6 +106,11 @@ $scope.addImage = function() {
 
 
         $scope.deliverShipping = function(){
+          for(var i=0;i<$scope.images.length;i++){
+        if($scope.images[i] == undefined){
+          $scope.images[i] = "";
+        }
+      }
 
           var formData = {
             "id_spedizione": $rootScope.spedizioniID,
@@ -113,8 +118,8 @@ $scope.addImage = function() {
             "nome_firmatario":$scope.giacenza.signer,
             "created_at":relativeTime(),
             "entry_by": $scope.currentuser.id,
-            "lat": "",
-            "long": "",
+            "lat": $rootScope.Latitude,
+            "long": $rootScope.longitude,
             "foto1": $scope.images[0],
             "foto2": $scope.images[1],
             "foto3": $scope.images[2],
@@ -122,7 +127,7 @@ $scope.addImage = function() {
             "note_cs_autista": $scope.giacenza.note,
 
           };
-          console.log($scope.images);
+          console.log(formData);
 
           serviceApi.consegnaCtrl(formData)
       .then(function (response) {
