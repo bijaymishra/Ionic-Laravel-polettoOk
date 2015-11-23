@@ -5,9 +5,9 @@
 
     function spedizioniCtrl($scope,$rootScope,$location,$http, $state, $timeout,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
     	
-        $scope.currentuser = localStorage.getItem('currentUser');
-          $scope.currentuser = JSON.stringify($scope.currentuser);
-          console.log($scope.currentuser[0].id + "jhjhjh");
+        
+          console.log($rootScope.loginUsers[0].id + "jhjhjh");
+          $scope.currentuserID = $rootScope.loginUsers[0].id;
 
        $scope.getSpediZioniDB = function() {
  

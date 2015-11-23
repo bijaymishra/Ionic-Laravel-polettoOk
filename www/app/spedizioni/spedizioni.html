@@ -3,7 +3,7 @@
   <ion-refresher pulling-text="Pull To Refresh" on-refresh="refreshSpediZioni()"
             refreshing-text="Fetching ..." refreshing-icon="ion-loading-b"
           ></ion-refresher>
-      <ion-list ng-repeat = "item in spedizioni.rows |filter: {'entry_by' : currentuser.id}" can-frag="false">
+      <ion-list ng-repeat = "item in spedizioni.rows |filter: {'entry_by' : currentuserID}" can-frag="false">
         <ion-item class="item-remove-animate item-icon-right" ng-click="view(item.id_spedizione);">
           <h2>{{item.numero_spedizione}}</h2>
           <p>{{item.rag_soc_dest}}</p>
