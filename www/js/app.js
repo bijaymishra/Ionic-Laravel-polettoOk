@@ -26,9 +26,9 @@ uver.run(function($rootScope,$ionicPlatform,$ionicPopup,$ionicHistory,CacheFacto
           content: 'Sorry, no Internet connectivity detected. Please reconnect and try again.'
         })
         .then(function(result) {
-          if(!result) {
+         
             ionic.Platform.exitApp();
-          }
+          
         });
       }
     }

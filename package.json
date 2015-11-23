@@ -25,7 +25,7 @@
     "hu.dpal.phonegap.plugins.spinnerdialog",
     "cordova-plugin-camera",
     "cordova-plugin-file",
-    "org.apache.cordova.network-information"
+    "cordova-plugin-network-information"
   ],
   "cordovaPlatforms": [
     "android"
