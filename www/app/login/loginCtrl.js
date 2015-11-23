@@ -43,7 +43,7 @@
 
             console.log("itsmatching");
              setTimeout(function() {//window.plugins.spinnerDialog.hide();
-             localStorage.setItem("currentUser",JSON.stringify($scope.loginUsers));
+             localStorage.setItem("currentUser",$scope.loginUsers);
              $state.go('app.profile');
              }, 1000);
             

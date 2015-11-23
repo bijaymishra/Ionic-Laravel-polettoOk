@@ -5,15 +5,16 @@
 
     function spedizioniCtrl($scope,$rootScope,$location,$http, $state, $timeout,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
     	
-        $scope.currentuser = localStorage.getItem('users');
-          $scope.currentuser = JSON.parse($scope.currentuser);
-          console.log($scope.currentuser);
+        $scope.currentuser = localStorage.getItem('currentUser');
+          $scope.currentuser = JSON.stringify($scope.currentuser);
+          console.log($scope.currentuser[0].id + "jhjhjh");
 
        $scope.getSpediZioniDB = function() {
  
     spedizioni.list(function(spedizionisumaary) {
       $scope.spedizioni =  spedizionisumaary;
       applicationLocalStorageService.storeCache('SpedizioniData', spedizionisumaary);
+      console.log($scope.spedizioni);
     });
      
   };

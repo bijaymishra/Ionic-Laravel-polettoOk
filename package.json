@@ -24,7 +24,8 @@
     "com.ionic.keyboard",
     "hu.dpal.phonegap.plugins.spinnerdialog",
     "cordova-plugin-camera",
-    "cordova-plugin-file"
+    "cordova-plugin-file",
+    "org.apache.cordova.network-information"
   ],
   "cordovaPlatforms": [
     "android"
