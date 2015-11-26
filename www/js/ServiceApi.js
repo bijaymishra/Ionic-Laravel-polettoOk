@@ -15,7 +15,7 @@
             {
                 method: 'POST',
                 url: url,
-                headers: {'Authorization': 'Basic YXBwQHBvbGV0dG93ZWIuY29tOnB2aTNFei1EVVFWei1EdzNRYlEtVjk5Qkg'},
+                headers: {'Content-Type':'application/json','Authorization': 'Basic YXBwQHBvbGV0dG93ZWIuY29tOnB2aTNFei1EVVFWei1EdzNRYlEtVjk5Qkg'},
                 data: data
             })
                 .success(function (response) {
@@ -241,7 +241,7 @@
 
             // Create data for API call 
             var data = {data:data};
-            return doPostHttp(data, url, "consegnaCtrl");
+            return doPostHttp("consegnaCtrl", url, data);
         }
 
 
