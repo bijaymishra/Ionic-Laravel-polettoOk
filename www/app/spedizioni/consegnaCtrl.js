@@ -136,7 +136,7 @@ $scope.addImage = function() {
             alert("please check your internet connection");
           }
           else {
-            alert("La spedizione è stata correttamente consegnata");
+            alert("La spedizione è stata correttamente consegnata" + JSON.stringify(formData));
           }
         },
         function (err) {
