@@ -11,7 +11,13 @@
 
             busyCursorStart();
 
-            $http.post(url, data)
+             $http(
+            {
+                method: 'POST',
+                url: url,
+                headers: {'Authorization': 'Basic YXBwQHBvbGV0dG93ZWIuY29tOnB2aTNFei1EVVFWei1EdzNRYlEtVjk5Qkg'},
+                data: data
+            })
                 .success(function (response) {
                     console.log(functionName + " Success");
 
@@ -211,7 +217,7 @@
             // Create data for API call 
             //var data = {};
 
-            return doGetHttp("getUsers", url);
+            return doGetHttp("getSpedizioni", url);
         }
          function getStatus() {
             console.log("calling Users");
@@ -221,21 +227,21 @@
             // Create data for API call 
             //var data = {};
 
-            return doGetHttp("getUsers", url);
+            return doGetHttp("getStatus", url);
         }
          function gicenzaCTRL(data) {
             var url = GENERAL_CONFIG.API_URL + 'sximoapi/id/?module=mancateconsegne'
 
             // Create data for API call 
             var data = {data:data};
-            return doPutHttpWithData(data, url, "signUpCTRL");
+            return doPutHttpWithData(data, url, "gicenzaCTRL");
         }
          function consegnaCtrl(data) {
-            var url = GENERAL_CONFIG.API_URL + 'sximoapi/id?module=effettuateconsegne'
+            var url = GENERAL_CONFIG.API_URL + 'sximoapi?module=consegneff'
 
             // Create data for API call 
             var data = {data:data};
-            return doPutHttpWithData(data, url, "signUpCTRL");
+            return doPostHttp(data, url, "consegnaCtrl");
         }
 
 
