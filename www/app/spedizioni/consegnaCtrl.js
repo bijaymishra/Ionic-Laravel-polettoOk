@@ -25,7 +25,7 @@
         } ;
         function getTimeStamp() {
        var now = new Date();
-       return ((now.getMonth() + 1) + '-' + (now.getDate()) + '-' + now.getFullYear() + " " + now.getHours() + ':'
+       return ((now.getFullYear() + 1) + '-' + (now.getMonth()) + '-' + now.getDate() + " " + now.getHours() + ':'
                      + ((now.getMinutes() < 10) ? ("0" + now.getMinutes()) : (now.getMinutes())) + ':' + ((now.getSeconds() < 10) ? ("0" + now
                      .getSeconds()) : (now.getSeconds())));
 }
@@ -113,19 +113,25 @@ $scope.addImage = function() {
         }
       }
 
+        if($rootScope.Latitude == undefined && $rootScope.longitude == undefined){
+          $rootScope.Latitude = "";
+          $rootScope.longitude = "";
+        }
+
           var formData = {
-            "id_spedizione": $rootScope.spedizioniID,
-            "id_consegna":"",
+             "id_spedizione": $rootScope.spedizioniID,
             "nome_firmatario":$scope.giacenza.signer,
             "created_at":getTimeStamp(),
-            "entry_by": $rootScope.loginUsers[0].id,
-            "lat": $rootScope.Latitude,
-            "long": $rootScope.longitude,
             "foto1": "",//$scope.images[0],
             "foto2": "",//$scope.images[1],
             "foto3": "",//$scope.images[2],
+            "entry_by": $rootScope.loginUsers[0].id,
             "id_stato_consegna":$scope.giacenza.statusSelect,
             "note_cs_autista": $scope.giacenza.note,
+            "updated_at":"0000-00-00 00:00:00",
+            "read":0,
+             "lat": $rootScope.Latitude,
+            "long": $rootScope.longitude,
 
           };
           console.log(formData);
