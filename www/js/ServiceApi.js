@@ -233,14 +233,14 @@
             var url = GENERAL_CONFIG.API_URL + 'sximoapi/id/?module=mancateconsegne'
 
             // Create data for API call 
-            var data = {data:data};
+            var data = {"data":data};
             return doPutHttpWithData(data, url, "gicenzaCTRL");
         }
          function consegnaCtrl(data) {
             var url = GENERAL_CONFIG.API_URL + 'sximoapi?module=consegneff'
 
             // Create data for API call 
-            var data = {data:data};
+            var data = {"data":data};
             return doPostHttp("consegnaCtrl", url, data);
         }
 
