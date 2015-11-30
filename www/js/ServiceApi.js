@@ -237,7 +237,7 @@
             return doPutHttpWithData(data, url, "gicenzaCTRL");
         }
          function consegnaCtrl(data) {
-            var url = GENERAL_CONFIG.API_URL + 'sximoapi?module=consegneff'
+            var url = GENERAL_CONFIG.API_URL + 'sximoapi?module=consegneapp'
 
             // Create data for API call 
             var data = {"data":data};
@@ -247,6 +247,6 @@
 
     }
 })();
-
+http://polettoweb.com/sximoapi?module=consegneapp
 
 
