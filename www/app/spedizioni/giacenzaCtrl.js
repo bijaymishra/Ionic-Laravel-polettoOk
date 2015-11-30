@@ -118,12 +118,12 @@ $scope.addImage = function() {
             "id_consegna":"",
             "nome_firmatario":$scope.giacenza.signer,
             "created_at":getTimeStamp(),
-            "entry_by": $scope.currentuser.id,
+            "entry_by": $rootScope.loginUsers[0].id,
             "lat": $rootScope.Latitude,
             "long": $rootScope.longitude,
-            "foto1": $scope.images[0],
-            "foto2": $scope.images[1],
-            "foto3": $scope.images[2],
+            "foto1": "",//$scope.images[0],
+            "foto2": "",//$scope.images[1],
+            "foto3": "",//$scope.images[2],
             "id_stato_consegna":$scope.giacenza.statusSelect,
             "note_cs_autista": $scope.giacenza.note,
 
@@ -136,7 +136,7 @@ $scope.addImage = function() {
             alert("please check your internet connection");
           }
           else {
-            alert("La spedizione è stata rifiutata" + JSON.stringify(formData));
+            alert("La spedizione è stata rifiutata");
           }
         },
         function (err) {
