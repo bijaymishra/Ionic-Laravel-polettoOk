@@ -247,6 +247,6 @@
 
     }
 })();
-http://polettoweb.com/sximoapi?module=consegneapp
+
 
 
