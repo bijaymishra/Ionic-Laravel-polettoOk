@@ -230,7 +230,7 @@
             return doGetHttp("getStatus", url);
         }
          function gicenzaCTRL(data) {
-            var url = GENERAL_CONFIG.API_URL + 'sximoapi/id/?module=mancateconsegne'
+            var url = GENERAL_CONFIG.API_URL + 'sximoapi?module=giacenze'
 
             // Create data for API call 
             var data = {"data":data};
