@@ -1,10 +1,10 @@
 (function () {
     //'use strict';
 
-    angular.module('uver').controller('consegnaCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',consegnaCtrl]);
+    angular.module('uver').controller('consegnaCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','$cordovaCapture','$cordovaImagePicker','$ionicActionSheet','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService','Photo',consegnaCtrl]);
 
-    function consegnaCtrl($scope,$rootScope,$location,$http, $state, $timeout,$cordovaCamera,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
-    	 $scope.picAllow = true;
+    function consegnaCtrl($scope,$rootScope,$location,$http, $state, $timeout,$cordovaCamera,$cordovaCapture, $cordovaImagePicker, $ionicActionSheet,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService,Photo) {
+       $scope.picAllow = true;
         $scope.currentuser = localStorage.getItem('users');
           $scope.currentuser = JSON.parse($scope.currentuser);
           console.log($scope.currentuser);
@@ -30,81 +30,6 @@
                      .getSeconds()) : (now.getSeconds())));
 }
         
- /*       //Cmaera Plugin implementation
-$scope.images = [];
-      
-      $scope.urlForImage = function(imageName) {
-        var name = imageName.substr(imageName.lastIndexOf('/') + 1);
-        var trueOrigin = cordova.file.dataDirectory + name;
-        return trueOrigin;
-      };
-$scope.addImage = function() {
-  var options = {
- destinationType : Camera.DestinationType.FILE_URI,
- sourceType : Camera.PictureSourceType.CAMERA, // Camera.PictureSourceType.PHOTOLIBRARY
- allowEdit : false,
- encodingType: Camera.EncodingType.JPEG,
- popoverOptions: CameraPopoverOptions,
- };
- 
-        $cordovaCamera.getPicture(options).then(function(imageData) {
-
-          if($scope.images.length<3){
-            
-          onImageSuccess(imageData);
-
-          function onImageSuccess(fileURI) {
-           createFileEntry(fileURI);
-           }
-            function createFileEntry(fileURI) {
-          window.resolveLocalFileSystemURL(fileURI, copyFile, fail);
-            }
-
-           function copyFile(fileEntry) {
-             var name = fileEntry.fullPath.substr(fileEntry.fullPath.lastIndexOf('/') + 1);
-             var newName = makeid() + name;
-             
-             window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(fileSystem2) {
-             fileEntry.copyTo(
-             fileSystem2,
-             newName,
-             onCopySuccess,
-             fail
-             );
-             },
-             fail);
-             }
-             function onCopySuccess(entry) {
- $scope.$apply(function () {
- $scope.images.push(entry.nativeURL);
- });
- }
- 
- function fail(error) {
- console.log("fail: " + error.code);
- }
- 
- function makeid() {
- var text = "";
- var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
- 
- for (var i=0; i < 5; i++) {
- text += possible.charAt(Math.floor(Math.random() * possible.length));
- }
- return text;
- }
- }else{
-  $scope.picAllow = false;
-  alert("Max three pics can be inserted.");
- }
- }, function(err) {
- console.log(err);
- });
-}
-       
-
-
-
 
         $scope.deliverShipping = function(){
           for(var i=0;i<$scope.images.length;i++){
@@ -112,7 +37,7 @@ $scope.addImage = function() {
           $scope.images[i] = "";
         }
       }
-*/
+
         if($rootScope.Latitude == undefined && $rootScope.longitude == undefined){
           $rootScope.Latitude = "";
           $rootScope.longitude = "";
@@ -150,91 +75,35 @@ $scope.addImage = function() {
       
         });
         }
-      $scope.consegna = function(itemId){
-          $location.path('/app/consegna');
-          spedizioni.find(itemId, function(spedizioniDetail) {
-          $scope.spedizioniDetails = spedizioniDetail;
-          console.log($scope.spedizioniDetails);
-        });
-      };
-          
-  
-}
+     
 
 
+      //new Code Start
 
-//New code 
-
- $ionicPlatform.ready(function() {
-
-        $scope.formData = {};
-
-        // action sheet
+         // action sheet
         $scope.showAction = function () {
-
-            var hideSheet = $ionicActionSheet.show({
-                buttons: [
-                    {text: ' Capture'},
-                    {text: ' Pick'}
-                ],
-                title: 'Add Photo',
-                cancelText: 'Cancel',
-                cancel: function () {
-                    //
-                },
-                buttonClicked: function (index) {
-                    if (index == 0) {
-                        var options = {
-                            limit: 1
+                    var options = {
+                            maximumImagesCount: 1,
                         };
-
-                        // capture
+          // capture
                         $cordovaCapture.captureImage(options).then(function (imageData) {
                             var imgData = imageData[0].fullPath;
                             // convert image to base64 string
                             Photo.convertImageToBase64(imgData, function(base64Img){
                                 $scope.formData.photo = base64Img;
+                                alert($scope.formData.photo);
                             });
 
                         }, function (error) {
                             $scope.photoError = error;
                         });
-                    } else if (index == 1) {
-                        var options = {
-                            maximumImagesCount: 1,
-                        };
-
-                        // pick
-                        $cordovaImagePicker.getPictures(options).then(function (results) {
-                            var imgData = results[0];
-                            // convert image to base64 string
-                            Photo.convertImageToBase64(imgData, function(base64Img){
-                                $scope.formData.photo = base64Img;
-                            });
-                        });
-                    }
-                }
-            })
+            
         };
 
-    });
+      //Ends
+          
+  
+}
 
-    $scope.sendData = function() {
-        $http.post('url', $scope.formData)
-            .success(function(successData){
-                // ...
-            })
-            .error(function (errorData) {
-                // ...
-            })
-    };
-
-})
-
-
-
-//Ends
 
 })();
-
-//http://dusanst.com/tricks/Ionic/Ionic-pick-or-capture-image,-conversion-to-base64-and-post-to-server

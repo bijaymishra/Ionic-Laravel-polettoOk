@@ -40,63 +40,24 @@ $scope.images = [];
       };
 $scope.addImage = function() {
   var options = {
- destinationType : Camera.DestinationType.FILE_URI,
+ destinationType : Camera.DestinationType.DATA_URL,
  sourceType : Camera.PictureSourceType.CAMERA, // Camera.PictureSourceType.PHOTOLIBRARY
  allowEdit : false,
  encodingType: Camera.EncodingType.JPEG,
  popoverOptions: CameraPopoverOptions,
  };
  
-        $cordovaCamera.getPicture(options).then(function(imageData) {
+         $cordovaCamera.getPicture(options).then(function(imageData) {
 
           if($scope.images.length<3){
             
-          onImageSuccess(imageData);
-
-          function onImageSuccess(fileURI) {
-           createFileEntry(fileURI);
+         $scope.images.push("data:image/jpeg;base64," + imageData);
+          
+          }else{
+            $scope.picAllow = false;
+            alert("Max three pics can be inserted.");
            }
-            function createFileEntry(fileURI) {
-          window.resolveLocalFileSystemURL(fileURI, copyFile, fail);
-            }
-
-           function copyFile(fileEntry) {
-             var name = fileEntry.fullPath.substr(fileEntry.fullPath.lastIndexOf('/') + 1);
-             var newName = makeid() + name;
-             
-             window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(fileSystem2) {
-             fileEntry.copyTo(
-             fileSystem2,
-             newName,
-             onCopySuccess,
-             fail
-             );
-             },
-             fail);
-             }
-             function onCopySuccess(entry) {
- $scope.$apply(function () {
- $scope.images.push(entry.nativeURL);
- });
- }
- 
- function fail(error) {
- console.log("fail: " + error.code);
- }
- 
- function makeid() {
- var text = "";
- var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
- 
- for (var i=0; i < 5; i++) {
- text += possible.charAt(Math.floor(Math.random() * possible.length));
- }
- return text;
- }
- }else{
-  $scope.picAllow = false;
-  alert("Max three pics can be inserted.");
- }
+        
  }, function(err) {
  console.log(err);
  });
@@ -122,9 +83,9 @@ $scope.addImage = function() {
              "id_spedizione": $rootScope.spedizioniID,
             "nome_firmatario":$scope.giacenza.signer,
             "created_at":getTimeStamp(),
-            "foto1": "",//$scope.images[0],
-            "foto2": "",//$scope.images[1],
-            "foto3": "",//$scope.images[2],
+            "foto1": $scope.images[0],
+            "foto2": $scope.images[1],
+            "foto3": $scope.images[2],
             "entry_by": $rootScope.loginUsers[0].id,
             "id_stato_consegna":$scope.giacenza.statusSelect,
             "note_cs_autista": $scope.giacenza.note,
@@ -146,7 +107,7 @@ $scope.addImage = function() {
           }
         },
         function (err) {
-          alert("Something not right please try again!!!");
+          alert("Something not right please try again!!!" );
       
         });
         }
