@@ -23,13 +23,13 @@
           statusSelect:'',
           note:''
         } ;
-        //function to get Timestamp
         function getTimeStamp() {
        var now = new Date();
        return ((now.getFullYear() + 1) + '-' + (now.getMonth()) + '-' + now.getDate() + " " + now.getHours() + ':'
                      + ((now.getMinutes() < 10) ? ("0" + now.getMinutes()) : (now.getMinutes())) + ':' + ((now.getSeconds() < 10) ? ("0" + now
                      .getSeconds()) : (now.getSeconds())));
-     }
+}
+        
         //Cmaera Plugin implementation
 $scope.images = [];
       
@@ -40,77 +40,37 @@ $scope.images = [];
       };
 $scope.addImage = function() {
   var options = {
- destinationType : Camera.DestinationType.FILE_URI,
+ destinationType : Camera.DestinationType.DATA_URL,
  sourceType : Camera.PictureSourceType.CAMERA, // Camera.PictureSourceType.PHOTOLIBRARY
  allowEdit : false,
  encodingType: Camera.EncodingType.JPEG,
  popoverOptions: CameraPopoverOptions,
  };
  
-        $cordovaCamera.getPicture(options).then(function(imageData) {
+         $cordovaCamera.getPicture(options).then(function(imageData) {
 
           if($scope.images.length<3){
             
-          onImageSuccess(imageData);
-
-          function onImageSuccess(fileURI) {
-           createFileEntry(fileURI);
+         $scope.images.push("data:image/jpeg;base64," + imageData);
+          
+          }else{
+            $scope.picAllow = false;
+            alert("Max three pics can be inserted.");
            }
-            function createFileEntry(fileURI) {
-          window.resolveLocalFileSystemURL(fileURI, copyFile, fail);
-            }
-
-           function copyFile(fileEntry) {
-             var name = fileEntry.fullPath.substr(fileEntry.fullPath.lastIndexOf('/') + 1);
-             var newName = makeid() + name;
-             
-             window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(fileSystem2) {
-             fileEntry.copyTo(
-             fileSystem2,
-             newName,
-             onCopySuccess,
-             fail
-             );
-             },
-             fail);
-             }
-             function onCopySuccess(entry) {
- $scope.$apply(function () {
- $scope.images.push(entry.nativeURL);
- });
- }
- 
- function fail(error) {
- console.log("fail: " + error.code);
- }
- 
- function makeid() {
- var text = "";
- var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
- 
- for (var i=0; i < 5; i++) {
- text += possible.charAt(Math.floor(Math.random() * possible.length));
- }
- return text;
- }
- }else{
-  $scope.picAllow = false;
-  alert("Max three pics can be inserted.");
- }
+        
  }, function(err) {
  console.log(err);
  });
 }
        
-
-
-      
         $scope.rejectShipping = function(){
-          for(var i=0;i<$scope.images.length;i++){
-        if($scope.images[i] == undefined){
-          $scope.images[i] = "";
+          if ($scope.images.length <= 0){ 
+          $scope.images[0] = "";
+           $scope.images[1] = "";
+            $scope.images[2] = "";
         }
-      }
+      
+
         if($rootScope.Latitude == undefined && $rootScope.longitude == undefined){
           $rootScope.Latitude = "";
           $rootScope.longitude = "";
@@ -120,12 +80,12 @@ $scope.addImage = function() {
             "id_spedizione": $rootScope.spedizioniID,
             "nome_firmatario":$scope.giacenza.signer,
             "created_at":getTimeStamp(),
-            "foto1": "",//$scope.images[0],
-            "foto2": "",//$scope.images[1],
-            "foto3": "",//$scope.images[2],
+            "foto1": $scope.images[0],
+            "foto2": $scope.images[1],
+            "foto3": $scope.images[2],
             "entry_by": $rootScope.loginUsers[0].id,
-            "id_stato_consegna":$scope.giacenza.statusSelect,
-            "note_cs_autista": $scope.giacenza.note,
+            "id_stato_rifiuto":$scope.giacenza.statusSelect,
+            "note_rf_autisti": $scope.giacenza.note,
             "updated_at":"0000-00-00 00:00:00",
             "read":0,
              "lat": $rootScope.Latitude,

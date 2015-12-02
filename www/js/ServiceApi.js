@@ -234,7 +234,7 @@
 
             // Create data for API call 
             var data = {"data":data};
-            return doPutHttpWithData(data, url, "gicenzaCTRL");
+            return doPostHttp("gicenzaCTRL", url, data);
         }
          function consegnaCtrl(data) {
             var url = GENERAL_CONFIG.API_URL + 'sximoapi?module=consegneapp'
