@@ -117,7 +117,7 @@ $scope.addImage = function() {
           }
         },
         function (err) {
-          alert("Something not right please try again!!!" +JSON.stringify(formData));
+          alert("Something not right please try again!!!");
       
         });
         }
