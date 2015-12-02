@@ -69,6 +69,19 @@ $scope.addImage = function() {
            $scope.images[1] = "";
             $scope.images[2] = "";
         }
+        /*
+            $scope.rejectShipping = function(){
+          if ($scope.images.length <= 0){ 
+          $scope.images[0] = "";
+           $scope.images[1] = "";
+            $scope.images[2] = "";
+        }else  if ($scope.images.length ==1){ 
+           $scope.images[1] = "";
+            $scope.images[2] = "";
+        }else  if ($scope.images.length ==2){ 
+            $scope.images[2] = "";
+        }
+        */
       
 
         if($rootScope.Latitude == undefined && $rootScope.longitude == undefined){
