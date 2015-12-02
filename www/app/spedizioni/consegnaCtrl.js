@@ -68,11 +68,13 @@ $scope.addImage = function() {
 
 
         $scope.deliverShipping = function(){
-          for(var i=0;i<$scope.images.length;i++){
-        if($scope.images[i] == undefined){
-          $scope.images[i] = "";
+        
+        if ($scope.images.length <= 0){ 
+          $scope.images[0] = "";
+           $scope.images[1] = "";
+            $scope.images[2] = "";
         }
-      }
+      
 
         if($rootScope.Latitude == undefined && $rootScope.longitude == undefined){
           $rootScope.Latitude = "";
