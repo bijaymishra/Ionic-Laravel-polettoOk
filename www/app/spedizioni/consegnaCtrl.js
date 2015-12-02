@@ -32,6 +32,7 @@
         
         //Cmaera Plugin implementation
 $scope.images = [];
+$scope.encodedImages = [];
       
       $scope.urlForImage = function(imageName) {
         var name = imageName.substr(imageName.lastIndexOf('/') + 1);
@@ -49,10 +50,11 @@ $scope.addImage = function() {
  
          $cordovaCamera.getPicture(options).then(function(imageData) {
 
-          if($scope.images.length<3){
+          if($scope.encodedImages.length<3){
             
          $scope.images.push("data:image/jpeg;base64," + imageData);
-          
+         $scope.encodedImages.push(imageData);
+         
           }else{
             $scope.picAllow = false;
             alert("Max three pics can be inserted.");
@@ -69,10 +71,16 @@ $scope.addImage = function() {
 
         $scope.deliverShipping = function(){
         
-        if ($scope.images.length <= 0){ 
-          $scope.images[0] = "";
-           $scope.images[1] = "";
-            $scope.images[2] = "";
+        if ($scope.encodedImages.length <= 0){ 
+          $scope.encodedImages[0] = "";
+           $scope.encodedImages[1] = "";
+            $scope.encodedImages[2] = "";
+        }else{
+          for(var i=0;i<$scope.encodedImages.length;i++){
+        if($scope.encodedImages[i] == undefined){
+          $scope.encodedImages[i] = "";
+          }
+            }
         }
       
 
@@ -85,9 +93,9 @@ $scope.addImage = function() {
              "id_spedizione": $rootScope.spedizioniID,
             "nome_firmatario":$scope.giacenza.signer,
             "created_at":getTimeStamp(),
-            "foto1": $scope.images[0],
-            "foto2": $scope.images[1],
-            "foto3": $scope.images[2],
+            "foto1": $scope.encodedImages[0],
+            "foto2": $scope.encodedImages[1],
+            "foto3": $scope.encodedImages[2],
             "entry_by": $rootScope.loginUsers[0].id,
             "id_stato_consegna":$scope.giacenza.statusSelect,
             "note_cs_autista": $scope.giacenza.note,
