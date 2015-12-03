@@ -34,9 +34,8 @@ uver.run(function($rootScope,$ionicPlatform,$ionicPopup,$ionicHistory,CacheFacto
     }
      geolocationService.getPosition()
     .then(function(position) {
-      $scope.coords = position.coords;
-       $rootScope.Latitude =$scope.coords.latitude;
-                $rootScope.longitude =$scope.coords.longitude;
+       $rootScope.Latitude =position.coords.latitude;
+         $rootScope.longitude =position.coords.longitude;
     }, function(err) {
       var myPopup = $ionicPopup.show({
                      // template: '',
