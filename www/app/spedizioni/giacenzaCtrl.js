@@ -65,7 +65,7 @@ $scope.addImage = function() {
  });
 }
        
-        $scope.rejectShipping = function(){
+       /* $scope.rejectShipping = function(){
           if ($scope.encodedImages.length <= 0){ 
           $scope.encodedImages[0] = "";
            $scope.encodedImages[1] = "";
@@ -76,20 +76,20 @@ $scope.addImage = function() {
           $scope.encodedImages[i] = "";
           }
             }
-        }
-        /*
+        }*/
+        
             $scope.rejectShipping = function(){
-          if ($scope.images.length <= 0){ 
-          $scope.images[0] = "";
-           $scope.images[1] = "";
-            $scope.images[2] = "";
-        }else  if ($scope.images.length ==1){ 
-           $scope.images[1] = "";
-            $scope.images[2] = "";
-        }else  if ($scope.images.length ==2){ 
-            $scope.images[2] = "";
+          if ($scope.encodedImages.length <= 0){ 
+          $scope.encodedImages[0] = "";
+           $scope.encodedImages[1] = "";
+            $scope.encodedImages[2] = "";
+        }else  if ($scope.encodedImages.length ==1){ 
+           $scope.encodedImages[1] = "";
+            $scope.encodedImages[2] = "";
+        }else  if ($scope.encodedImages.length ==2){ 
+            $scope.encodedImages[2] = "";
         }
-        */
+        
       
 
         if($rootScope.Latitude == undefined && $rootScope.longitude == undefined){

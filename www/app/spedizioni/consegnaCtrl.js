@@ -71,7 +71,7 @@ $scope.addImage = function() {
 
         $scope.deliverShipping = function(){
         
-        if ($scope.encodedImages.length <= 0){ 
+       /* if ($scope.encodedImages.length <= 0){ 
           $scope.encodedImages[0] = "";
            $scope.encodedImages[1] = "";
             $scope.encodedImages[2] = "";
@@ -81,6 +81,16 @@ $scope.addImage = function() {
           $scope.encodedImages[i] = "";
           }
             }
+        }*/
+        if ($scope.encodedImages.length <= 0){ 
+          $scope.encodedImages[0] = "";
+           $scope.encodedImages[1] = "";
+            $scope.encodedImages[2] = "";
+        }else  if ($scope.encodedImages.length ==1){ 
+           $scope.encodedImages[1] = "";
+            $scope.encodedImages[2] = "";
+        }else  if ($scope.encodedImages.length ==2){ 
+            $scope.encodedImages[2] = "";
         }
       
 
