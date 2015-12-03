@@ -32,11 +32,19 @@ uver.run(function($rootScope,$ionicPlatform,$ionicPopup,$ionicHistory,CacheFacto
         });
       }
     }
-    geolocationService().then(function(position) {
-                console.log(position.coords.longitude);
-                $rootScope.Latitude = position.coords.latitude;
-                $rootScope.longitude = position.coords.longitude;
-              });
+     geolocationService.getPosition()
+    .then(function(position) {
+      $scope.coords = position.coords;
+       $rootScope.Latitude =$scope.coords.latitude;
+                $rootScope.longitude =$scope.coords.longitude;
+    }, function(err) {
+      var myPopup = $ionicPopup.show({
+                     // template: '',
+                     // title: 'Terms',
+                     subTitle: "We cannot determine your location. To fix this, go to Location Settings and turn on location services for the PolettoOk app and restart.",
+                     buttons: [{ text: 'Close' }]
+                 });
+    });
     $ionicPlatform.registerBackButtonAction(function (event) {
     
         if($ionicHistory.currentStateName() == "app.profile"){
