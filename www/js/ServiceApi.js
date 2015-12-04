@@ -219,6 +219,16 @@
 
             return doGetHttp("getSpedizioni", url);
         }
+          function getRitri() {
+            console.log("calling Users");
+
+            var url = GENERAL_CONFIG.API_URL + 'sximoapi?module=gestrit';
+
+            // Create data for API call 
+            //var data = {};
+
+            return doGetHttp("getRitri", url);
+        }
          function getStatus() {
             console.log("calling Users");
 

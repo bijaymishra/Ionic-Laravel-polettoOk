@@ -1,34 +1,34 @@
 (function () {
     'use strict';
 
-    angular.module('uver').controller('spedizioniCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',spedizioniCtrl]);
+    angular.module('uver').controller('ritriCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','serviceApi','GENERAL_CONFIG','ritri','applicationLocalStorageService',ritriCtrl]);
 
-    function spedizioniCtrl($scope,$rootScope,$location,$http, $state, $timeout,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
+    function ritriCtrl($scope,$rootScope,$location,$http, $state, $timeout,serviceApi,GENERAL_CONFIG,ritri,applicationLocalStorageService) {
     	
         
           console.log($rootScope.loginUsers[0].id + "jhjhjh");
           $scope.currentuserID = $rootScope.loginUsers[0].id;
 
-       $scope.getSpediZioniDB = function() {
+       $scope.getRitriDB = function() {
  
-    spedizioni.list(function(spedizionisumaary) {
-      $scope.spedizioni =  spedizionisumaary;
-      applicationLocalStorageService.storeCache('SpedizioniData', spedizionisumaary);
-      console.log($scope.spedizioni);
+    ritri.list(function(ritrisumaary) {
+      $scope.ritri =  ritrisumaary;
+      applicationLocalStorageService.storeCache('RitriData', spedizionisumaary);
+      console.log($scope.ritri);
     });
      
   };
   
-  if (!applicationLocalStorageService.checkKey('SpedizioniData')) {
-             $scope.getSpediZioniDB();
+  if (!applicationLocalStorageService.checkKey('RitriData')) {
+             $scope.getRitriDB();
         }else{
           $scope.spedizioni = applicationLocalStorageService.getCache('SpedizioniData');
         }
 
-  $scope.refreshSpediZioni = function() {
+  $scope.refreshRitri = function() {
 
     console.log('Refreshing');
-    $scope.getSpediZioniDB();
+    $scope.getRitriDB();
 
     $timeout(function() {
       $scope.$broadcast('scroll.refreshComplete');
@@ -37,8 +37,8 @@
   };
   
   $scope.view = function(itemId){
-    var result ={spedizioniId:itemId};
-          $state.go('app.view',result);
+    var result ={retriId:itemId};
+          $state.go('app.ritirilx',result);
       };
 
       //consegna implemantation

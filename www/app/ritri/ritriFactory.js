@@ -1,10 +1,10 @@
-angular.module('uver').factory('spedizioni', function($http,serviceApi,applicationLocalStorageService) {
+angular.module('uver').factory('ritri', function($http,serviceApi,applicationLocalStorageService) {
  var cachedData;
  
   function getData(callback) 
   {
  
-    serviceApi.getSpedizioni()
+    serviceApi.getRitri()
       .then(function (response) {
            cachedData = response;
            callback(response);
@@ -16,10 +16,10 @@ angular.module('uver').factory('spedizioni', function($http,serviceApi,applicati
     list: getData,
     find: function(id, callback) {
       console.log(id);
-      var spedizioniDetail = cachedData.rows.filter(function(entry){
+      var ritriDetail = cachedData.rows.filter(function(entry){
         return entry.id_spedizione == id;
       })[0];
-      callback(spedizioniDetail);
+      callback(ritriDetail);
     }
   };
  

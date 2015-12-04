@@ -26,7 +26,7 @@ uver.config(function($stateProvider, $urlRouterProvider) {
   })
     .state('app.ritirilx', {
     cache: false,
-    url: '/ritirilx',
+    url: '/ritirilx/:retriId',
     templateUrl: 'templates/ritirilx.html',
     controller: 'userCtrl'
   })
