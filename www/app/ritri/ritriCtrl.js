@@ -11,9 +11,9 @@
 
        $scope.getRitriDB = function() {
  
-    ritri.list(function(ritrisumaary) {
+    ritri.ritirilist(function(ritrisumaary) {
       $scope.ritri =  ritrisumaary;
-      applicationLocalStorageService.storeCache('RitriData', spedizionisumaary);
+      applicationLocalStorageService.storeCache('RitriData', ritrisumaary);
       console.log($scope.ritri);
     });
      
@@ -22,7 +22,7 @@
   if (!applicationLocalStorageService.checkKey('RitriData')) {
              $scope.getRitriDB();
         }else{
-          $scope.spedizioni = applicationLocalStorageService.getCache('SpedizioniData');
+          $scope.ritri = applicationLocalStorageService.getCache('RitriData');
         }
 
   $scope.refreshRitri = function() {
@@ -36,7 +36,7 @@
     }, 1250);
   };
   
-  $scope.view = function(itemId){
+  $scope.ritriview = function(itemId){
     var result ={retriId:itemId};
           $state.go('app.ritirilx',result);
       };
@@ -46,16 +46,16 @@
       
 
        $scope.giacenza = function(itemId){
-        spedizioni.find(itemId, function(spedizioniDetail) {
-          $rootScope.spedizioniID = spedizioniDetail.id_spedizione;
+        ritri.find(itemId, function(ritriDetail) {
+          $rootScope.ritriID = ritriDetail.id_ritiro;
           });
                  $location.path('/app/giacenza');
           
         
       };
       $scope.consegna = function(itemId){
-          spedizioni.find(itemId, function(spedizioniDetail) {
-          $rootScope.spedizioniID = spedizioniDetail.id_spedizione;
+          ritri.find(itemId, function(ritriDetail) {
+          $rootScope.ritriID = ritriDetail.id_ritiro;
           });
                  $location.path('/app/consegna');
           

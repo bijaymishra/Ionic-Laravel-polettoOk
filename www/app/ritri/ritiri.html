@@ -1,0 +1,28 @@
+<ion-view title="Ritiri">
+  <ion-content class="profile-content">
+  <ion-refresher pulling-text="Pull To Refresh" on-refresh="refreshRitri()"
+            refreshing-text="Fetching ..." refreshing-icon="ion-loading-b"
+          ></ion-refresher>
+      <ion-list ng-repeat = "item in ritri.rows" can-frag="false">
+        <ion-item class="item-remove-animate item-icon-right" ng-click="ritriview(item.id_ritiro);">
+          <h2>{{item.num_viaggio}}</h2>
+          <p>{{item.rag_soc_mitt}}</p>
+          <p>{{item.indirizzo_mitt}}</p>
+          <p>{{item.localita_mitt}}</p>
+
+          <i class="icon ion-arrow-right-b"></i>
+          <ion-reorder-button class="ion-drag" on-reorder="move(note, $fromIndex, $toIndex)"></ion-reorder-button>
+          <ion-option-button class="button-balanced icon-left ion-happy-outline" ng-click="consegna(item.id_ritiro)"> Consegna</ion-option-button>
+          <ion-option-button class="button-assertive icon-left ion-trash-b" ng-click="giacenza(item.id_ritiro)"> Rifiuta</ion-option-button>
+        </ion-item>
+       
+      </ion-list>
+  </ion-content>
+  <div class="bar bar-footer bar-stable">
+ 	<a class="button button-balanced icon-left ion-happy-outline">Consegnate</a>
+ 	<a class="button button-assertive icon-left ion-trash-b">Rifiutate</a>
+ </div>
+</ion-view>
+
+
+

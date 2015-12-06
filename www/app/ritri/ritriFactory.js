@@ -13,11 +13,11 @@ angular.module('uver').factory('ritri', function($http,serviceApi,applicationLoc
    }
  
   return {
-    list: getData,
+    ritirilist: getData,
     find: function(id, callback) {
       console.log(id);
       var ritriDetail = cachedData.rows.filter(function(entry){
-        return entry.id_spedizione == id;
+        return entry.id_ritiro == id;
       })[0];
       callback(ritriDetail);
     }

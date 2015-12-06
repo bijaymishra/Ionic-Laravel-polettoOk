@@ -21,14 +21,14 @@ uver.config(function($stateProvider, $urlRouterProvider) {
    .state('app.ritiri', {
     cache: false,
     url: '/ritiri',
-    templateUrl: 'templates/ritiri.html',
-    controller: 'userCtrl'
+    templateUrl: 'app/ritri/ritiri.html',
+    controller: 'ritriCtrl'
   })
     .state('app.ritirilx', {
     cache: false,
     url: '/ritirilx/:retriId',
-    templateUrl: 'templates/ritirilx.html',
-    controller: 'userCtrl'
+    templateUrl: 'app/ritri/ritirilx.html',
+    controller: 'ritirilxCtrl'
   })
     .state('app.ritira', {
     cache: false,

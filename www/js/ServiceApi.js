@@ -195,7 +195,8 @@
             getSpedizioni : getSpedizioni,
             getStatus : getStatus,
             gicenzaCTRL : gicenzaCTRL,
-            consegnaCtrl : consegnaCtrl
+            consegnaCtrl : consegnaCtrl,
+            getRitri : getRitri
             
             };
 
