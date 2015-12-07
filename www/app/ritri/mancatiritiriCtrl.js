@@ -1,9 +1,9 @@
 (function () {
     //'use strict';
 
-    angular.module('uver').controller('consegnaCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',consegnaCtrl]);
+    angular.module('uver').controller('mancatiritiriCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','serviceApi','GENERAL_CONFIG','ritri','applicationLocalStorageService',mancatiritiriCtrl]);
 
-    function consegnaCtrl($scope,$rootScope,$location,$http, $state, $timeout,$cordovaCamera,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
+    function mancatiritiriCtrl($scope,$rootScope,$location,$http, $state, $timeout,$cordovaCamera,serviceApi,GENERAL_CONFIG,ritri,applicationLocalStorageService) {
     	 $scope.picAllow = true;
         $scope.currentuser = localStorage.getItem('users');
           $scope.currentuser = JSON.parse($scope.currentuser);
@@ -69,7 +69,7 @@ $scope.addImage = function() {
 
 
 
-        $scope.deliverShipping = function(){
+        $scope.withdrawlShipping = function(){
         
        /* if ($scope.encodedImages.length <= 0){ 
           $scope.encodedImages[0] = "";
@@ -100,15 +100,15 @@ $scope.addImage = function() {
         }
 
           var formData = {
-             "id_spedizione": $rootScope.spedizioniID,
+             "id_ritiro": $rootScope.ritriID,
             "nome_firmatario":$scope.giacenza.signer,
             "created_at":getTimeStamp(),
             "foto1": $scope.encodedImages[0],
             "foto2": $scope.encodedImages[1],
             "foto3": $scope.encodedImages[2],
             "entry_by": $rootScope.loginUsers[0].id,
-            "id_stato_consegna":$scope.giacenza.statusSelect,
-            "note_cs_autista": $scope.giacenza.note,
+            "id_stato":$scope.giacenza.statusSelect,
+            "note_rt_autisti": $scope.giacenza.note,
             "updated_at":"0000-00-00 00:00:00",
             "read":0,
              "lat": $rootScope.Latitude,
@@ -117,7 +117,7 @@ $scope.addImage = function() {
           };
           console.log(formData);
 
-          serviceApi.consegnaCtrl(formData)
+          serviceApi.mancatiritiriCtrl(formData)
       .then(function (response) {
           if (response == '204') {
             alert("please check your internet connection");

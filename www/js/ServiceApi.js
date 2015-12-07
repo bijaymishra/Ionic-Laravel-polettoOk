@@ -196,7 +196,10 @@
             getStatus : getStatus,
             gicenzaCTRL : gicenzaCTRL,
             consegnaCtrl : consegnaCtrl,
-            getRitri : getRitri
+            getRitri : getRitri,
+            mancatiritiriCtrl : mancatiritiriCtrl,
+            ritirieffappCtrl : ritirieffappCtrl
+
             
             };
 
@@ -253,6 +256,20 @@
             // Create data for API call 
             var data = {"data":data};
             return doPostHttp("consegnaCtrl", url, data);
+        }
+         function mancatiritiriCtrl(data) {
+            var url = GENERAL_CONFIG.API_URL + 'sximoapi?module=mancatiritiriapp'
+
+            // Create data for API call 
+            var data = {"data":data};
+            return doPostHttp("mancatiritiriCtrl", url, data);
+        }
+          function ritirieffappCtrl(data) {
+            var url = GENERAL_CONFIG.API_URL + 'sximoapi?module=ritirieffapp'
+
+            // Create data for API call 
+            var data = {"data":data};
+            return doPostHttp("ritirieffappCtrl", url, data);
         }
 
 

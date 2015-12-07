@@ -53,11 +53,11 @@
           
         
       };
-      $scope.consegna = function(itemId){
+      $scope.mancatiritiri = function(itemId){
           ritri.find(itemId, function(ritriDetail) {
           $rootScope.ritriID = ritriDetail.id_ritiro;
           });
-                 $location.path('/app/consegna');
+                 $location.path('/app/ritira');
           
         
       };
