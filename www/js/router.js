@@ -39,8 +39,8 @@ uver.config(function($stateProvider, $urlRouterProvider) {
     .state('app.rifiuta', {
     cache: false,
     url: '/rifiuta',
-    templateUrl: 'templates/rifiuta.html',
-    controller: 'userCtrl'
+    templateUrl: 'app/ritri/rifiuta.html',
+    controller: 'ritirieffappCtrl'
   })
     .state('app.view', {
     cache: false,

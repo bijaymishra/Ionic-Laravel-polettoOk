@@ -45,11 +45,11 @@
   
       
 
-       $scope.giacenza = function(itemId){
+       $scope.ritirieff = function(itemId){
         ritri.find(itemId, function(ritriDetail) {
           $rootScope.ritriID = ritriDetail.id_ritiro;
           });
-                 $location.path('/app/giacenza');
+                 $location.path('/app/rifiuta');
           
         
       };
