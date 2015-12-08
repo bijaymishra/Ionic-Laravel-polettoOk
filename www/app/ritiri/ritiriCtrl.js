@@ -49,7 +49,7 @@
         ritiri.find(itemId, function(ritiriDetail) {
           $rootScope.ritiriID = ritiriDetail.id_ritiro;
           });
-                 $location.path('/app/rifiuta');
+                 $location.path('/app/ritira');
           
         
       };
@@ -57,7 +57,7 @@
           ritiri.find(itemId, function(ritiriDetail) {
           $rootScope.ritiriID = ritiriDetail.id_ritiro;
           });
-                 $location.path('/app/ritira');
+                 $location.path('/app/rifiuta');
           
         
       };
