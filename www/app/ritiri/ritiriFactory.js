@@ -1,4 +1,4 @@
-angular.module('uver').factory('ritri', function($http,serviceApi,applicationLocalStorageService) {
+angular.module('uver').factory('ritiri', function($http,serviceApi,applicationLocalStorageService) {
  var cachedData;
  
   function getData(callback) 

@@ -1,9 +1,9 @@
 (function () {
     //'use strict';
 
-    angular.module('uver').controller('ritirieffappCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',ritirieffappCtrl]);
+    angular.module('uver').controller('ritirieffappCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','serviceApi','GENERAL_CONFIG','ritiri','applicationLocalStorageService',ritirieffappCtrl]);
 
-    function ritirieffappCtrl($scope,$rootScope,$location,$http, $state, $timeout,$cordovaCamera,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
+    function ritirieffappCtrl($scope,$rootScope,$location,$http, $state, $timeout,$cordovaCamera,serviceApi,GENERAL_CONFIG,ritiri,applicationLocalStorageService) {
     	 $scope.picAllow = true;
         $scope.currentuser = localStorage.getItem('users');
           $scope.currentuser = JSON.parse($scope.currentuser);

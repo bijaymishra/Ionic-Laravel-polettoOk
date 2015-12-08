@@ -1,9 +1,9 @@
 (function () {
     //'use strict';
 
-    angular.module('uver').controller('mancatiritiriCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','serviceApi','GENERAL_CONFIG','ritri','applicationLocalStorageService',mancatiritiriCtrl]);
+    angular.module('uver').controller('mancatiritiriCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','serviceApi','GENERAL_CONFIG','ritiri','applicationLocalStorageService',mancatiritiriCtrl]);
 
-    function mancatiritiriCtrl($scope,$rootScope,$location,$http, $state, $timeout,$cordovaCamera,serviceApi,GENERAL_CONFIG,ritri,applicationLocalStorageService) {
+    function mancatiritiriCtrl($scope,$rootScope,$location,$http, $state, $timeout,$cordovaCamera,serviceApi,GENERAL_CONFIG,ritiri,applicationLocalStorageService) {
     	 $scope.picAllow = true;
         $scope.currentuser = localStorage.getItem('users');
           $scope.currentuser = JSON.parse($scope.currentuser);

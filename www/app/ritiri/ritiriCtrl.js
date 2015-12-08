@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('uver').controller('ritriCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','serviceApi','GENERAL_CONFIG','ritri','applicationLocalStorageService',ritriCtrl]);
+    angular.module('uver').controller('ritiriCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','serviceApi','GENERAL_CONFIG','ritiri','applicationLocalStorageService',ritriCtrl]);
 
-    function ritriCtrl($scope,$rootScope,$location,$http, $state, $timeout,serviceApi,GENERAL_CONFIG,ritri,applicationLocalStorageService) {
+    function ritriCtrl($scope,$rootScope,$location,$http, $state, $timeout,serviceApi,GENERAL_CONFIG,ritiri,applicationLocalStorageService) {
     	
         
           console.log($rootScope.loginUsers[0].id + "jhjhjh");
