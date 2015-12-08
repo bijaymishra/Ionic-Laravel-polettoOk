@@ -21,25 +21,25 @@ uver.config(function($stateProvider, $urlRouterProvider) {
    .state('app.ritiri', {
     cache: false,
     url: '/ritiri',
-    templateUrl: 'app/ritri/ritiri.html',
-    controller: 'ritriCtrl'
+    templateUrl: 'app/ritiri/ritiri.html',
+    controller: 'ritiriCtrl'
   })
     .state('app.ritirilx', {
     cache: false,
     url: '/ritirilx/:retriId',
-    templateUrl: 'app/ritri/ritirilx.html',
+    templateUrl: 'app/ritiri/ritirilx.html',
     controller: 'ritirilxCtrl'
   })
     .state('app.ritira', {
     cache: false,
     url: '/ritira',
-    templateUrl: 'app/ritri/ritira.html',
+    templateUrl: 'app/ritiri/ritira.html',
     controller: 'mancatiritiriCtrl'
   })
     .state('app.rifiuta', {
     cache: false,
     url: '/rifiuta',
-    templateUrl: 'app/ritri/rifiuta.html',
+    templateUrl: 'app/ritiri/rifiuta.html',
     controller: 'ritirieffappCtrl'
   })
     .state('app.view', {
