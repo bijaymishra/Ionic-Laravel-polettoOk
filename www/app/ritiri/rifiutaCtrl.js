@@ -154,7 +154,7 @@ $scope.addImage = function() {
         }
 
           var formData = {
-            "id_ritiro": $rootScope.ritriID,
+            "id_ritiro": $rootScope.ritiriID,
             "nome_firmatario":$scope.giacenza.signer,
             "created_at":getTimeStamp(),
             "foto1": $scope.encodedImages[0],

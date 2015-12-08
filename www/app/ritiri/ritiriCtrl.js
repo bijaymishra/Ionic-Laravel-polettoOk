@@ -1,34 +1,34 @@
 (function () {
     'use strict';
 
-    angular.module('uver').controller('ritiriCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','serviceApi','GENERAL_CONFIG','ritiri','applicationLocalStorageService',ritriCtrl]);
+    angular.module('uver').controller('ritiriCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','serviceApi','GENERAL_CONFIG','ritiri','applicationLocalStorageService',ritiriCtrl]);
 
-    function ritriCtrl($scope,$rootScope,$location,$http, $state, $timeout,serviceApi,GENERAL_CONFIG,ritiri,applicationLocalStorageService) {
+    function ritiriCtrl($scope,$rootScope,$location,$http, $state, $timeout,serviceApi,GENERAL_CONFIG,ritiri,applicationLocalStorageService) {
     	
         
           console.log($rootScope.loginUsers[0].id + "jhjhjh");
           $scope.currentuserID = $rootScope.loginUsers[0].id;
 
-       $scope.getRitriDB = function() {
+       $scope.getRitiriDB = function() {
  
-    ritri.ritirilist(function(ritrisumaary) {
-      $scope.ritri =  ritrisumaary;
-      applicationLocalStorageService.storeCache('RitriData', ritrisumaary);
-      console.log($scope.ritri);
+    ritiri.ritirilist(function(ritirisumaary) {
+      $scope.ritiri =  ritirisumaary;
+      applicationLocalStorageService.storeCache('RitiriData', ritirisumaary);
+      console.log($scope.ritiri);
     });
      
   };
   
-  if (!applicationLocalStorageService.checkKey('RitriData')) {
-             $scope.getRitriDB();
+  if (!applicationLocalStorageService.checkKey('RitiriData')) {
+             $scope.getRitiriDB();
         }else{
-          $scope.ritri = applicationLocalStorageService.getCache('RitriData');
+          $scope.ritiri = applicationLocalStorageService.getCache('RitiriData');
         }
 
-  $scope.refreshRitri = function() {
+  $scope.refreshRitiri = function() {
 
     console.log('Refreshing');
-    $scope.getRitriDB();
+    $scope.getRitiriDB();
 
     $timeout(function() {
       $scope.$broadcast('scroll.refreshComplete');
@@ -36,7 +36,7 @@
     }, 1250);
   };
   
-  $scope.ritriview = function(itemId){
+  $scope.ritiriview = function(itemId){
     var result ={retriId:itemId};
           $state.go('app.ritirilx',result);
       };
@@ -46,16 +46,16 @@
       
 
        $scope.ritirieff = function(itemId){
-        ritri.find(itemId, function(ritriDetail) {
-          $rootScope.ritriID = ritriDetail.id_ritiro;
+        ritiri.find(itemId, function(ritiriDetail) {
+          $rootScope.ritiriID = ritiriDetail.id_ritiro;
           });
                  $location.path('/app/rifiuta');
           
         
       };
       $scope.mancatiritiri = function(itemId){
-          ritri.find(itemId, function(ritriDetail) {
-          $rootScope.ritriID = ritriDetail.id_ritiro;
+          ritiri.find(itemId, function(ritiriDetail) {
+          $rootScope.ritiriID = ritiriDetail.id_ritiro;
           });
                  $location.path('/app/ritira');
           

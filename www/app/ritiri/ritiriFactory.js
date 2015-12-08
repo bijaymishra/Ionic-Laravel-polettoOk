@@ -4,7 +4,7 @@ angular.module('uver').factory('ritiri', function($http,serviceApi,applicationLo
   function getData(callback) 
   {
  
-    serviceApi.getRitri()
+    serviceApi.getRitiri()
       .then(function (response) {
            cachedData = response;
            callback(response);
@@ -16,10 +16,10 @@ angular.module('uver').factory('ritiri', function($http,serviceApi,applicationLo
     ritirilist: getData,
     find: function(id, callback) {
       console.log(id);
-      var ritriDetail = cachedData.rows.filter(function(entry){
+      var ritiriDetail = cachedData.rows.filter(function(entry){
         return entry.id_ritiro == id;
       })[0];
-      callback(ritriDetail);
+      callback(ritiriDetail);
     }
   };
  

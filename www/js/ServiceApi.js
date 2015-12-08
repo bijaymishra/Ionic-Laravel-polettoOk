@@ -196,7 +196,7 @@
             getStatus : getStatus,
             gicenzaCTRL : gicenzaCTRL,
             consegnaCtrl : consegnaCtrl,
-            getRitri : getRitri,
+            getRitiri : getRitiri,
             mancatiritiriCtrl : mancatiritiriCtrl,
             ritirieffappCtrl : ritirieffappCtrl
 
@@ -223,7 +223,7 @@
 
             return doGetHttp("getSpedizioni", url);
         }
-          function getRitri() {
+          function getRitiri() {
             console.log("calling Users");
 
             var url = GENERAL_CONFIG.API_URL + 'sximoapi?module=gestrit';
@@ -231,7 +231,7 @@
             // Create data for API call 
             //var data = {};
 
-            return doGetHttp("getRitri", url);
+            return doGetHttp("getRitiri", url);
         }
          function getStatus() {
             console.log("calling Users");
