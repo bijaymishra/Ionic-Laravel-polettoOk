@@ -3,7 +3,7 @@
   <ion-refresher pulling-text="Pull To Refresh" on-refresh="refreshRitri()"
             refreshing-text="Fetching ..." refreshing-icon="ion-loading-b"
           ></ion-refresher>
-      <ion-list ng-repeat = "item in ritiri.rows" can-frag="false">
+      <ion-list ng-repeat = "item in ritiri.rows |filter: {'entry_by' : currentuserID}" can-frag="false">
         <ion-item class="item-remove-animate item-icon-right" ng-click="ritriview(item.id_ritiro);">
           <h2>{{item.num_viaggio}}</h2>
           <p>{{item.rag_soc_mitt}}</p>
