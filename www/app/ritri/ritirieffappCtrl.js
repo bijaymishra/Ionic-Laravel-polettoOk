@@ -1,9 +1,9 @@
 (function () {
     //'use strict';
 
-    angular.module('uver').controller('ritirieffappCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','serviceApi','GENERAL_CONFIG','spedizioni','applicationLocalStorageService',ritirieffappCtrl]);
+    angular.module('uver').controller('mancatiritiriCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','serviceApi','GENERAL_CONFIG','ritri','applicationLocalStorageService',mancatiritiriCtrl]);
 
-    function ritirieffappCtrl($scope,$rootScope,$location,$http, $state, $timeout,$cordovaCamera,serviceApi,GENERAL_CONFIG,spedizioni,applicationLocalStorageService) {
+    function mancatiritiriCtrl($scope,$rootScope,$location,$http, $state, $timeout,$cordovaCamera,serviceApi,GENERAL_CONFIG,ritri,applicationLocalStorageService) {
     	 $scope.picAllow = true;
         $scope.currentuser = localStorage.getItem('users');
           $scope.currentuser = JSON.parse($scope.currentuser);
@@ -108,9 +108,9 @@ $scope.addImage = function() {
 
           if($scope.encodedImages.length<3){
             
-         $scope.encodedImages.push(imageData);
          $scope.images.push("data:image/jpeg;base64," + imageData);
-          
+         $scope.encodedImages.push(imageData);
+         
           }else{
             $scope.picAllow = false;
             alert("Max three pics can be inserted.");
@@ -121,8 +121,13 @@ $scope.addImage = function() {
  });
 }
        
-       /* $scope.rejectShipping = function(){
-          if ($scope.encodedImages.length <= 0){ 
+
+
+
+
+        $scope.withdrawlShipping = function(){
+        
+       /* if ($scope.encodedImages.length <= 0){ 
           $scope.encodedImages[0] = "";
            $scope.encodedImages[1] = "";
             $scope.encodedImages[2] = "";
@@ -133,9 +138,7 @@ $scope.addImage = function() {
           }
             }
         }*/
-        
-            $scope.rejectShipping = function(){
-          if ($scope.encodedImages.length <= 0){ 
+        if ($scope.encodedImages.length <= 0){ 
           $scope.encodedImages[0] = "";
            $scope.encodedImages[1] = "";
             $scope.encodedImages[2] = "";
@@ -145,7 +148,6 @@ $scope.addImage = function() {
         }else  if ($scope.encodedImages.length ==2){ 
             $scope.encodedImages[2] = "";
         }
-        
       
 
         if($rootScope.Latitude == undefined && $rootScope.longitude == undefined){
@@ -154,30 +156,30 @@ $scope.addImage = function() {
         }
 
           var formData = {
-            "id_ritiro": $rootScope.ritriID,
+             "id_ritiro": $rootScope.ritriID,
             "nome_firmatario":$scope.giacenza.signer,
             "created_at":getTimeStamp(),
             "foto1": $scope.encodedImages[0],
             "foto2": $scope.encodedImages[1],
             "foto3": $scope.encodedImages[2],
             "entry_by": $rootScope.loginUsers[0].id,
-            "id_stato_rifiuto":$scope.giacenza.statusSelect,
-            "note_rf_autisti": $scope.giacenza.note,
+            "id_stato":$scope.giacenza.statusSelect,
+            "note_rt_autisti": $scope.giacenza.note,
             "updated_at":"0000-00-00 00:00:00",
             "read":0,
              "lat": $rootScope.Latitude,
             "long": $rootScope.longitude,
 
           };
-          console.log($scope.images);
+          console.log(formData);
 
-          serviceApi.gicenzaCTRL(formData)
+          serviceApi.ritirieffappCtrl(formData)
       .then(function (response) {
           if (response == '204') {
             alert("please check your internet connection");
           }
           else {
-            alert("La spedizione è stata rifiutata");
+            alert("La spedizione è stata correttamente consegnata");
           }
         },
         function (err) {
