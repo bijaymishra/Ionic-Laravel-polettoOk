@@ -44,6 +44,7 @@
             console.log("itsmatching");
              setTimeout(function() {//window.plugins.spinnerDialog.hide();
              localStorage.setItem("currentUser",$rootScope.loginUsers);
+             localStorage.setItem("isLogin","true");
              $state.go('app.profile');
              }, 1000);
             

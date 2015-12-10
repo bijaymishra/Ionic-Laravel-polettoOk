@@ -8,7 +8,27 @@ uver.config(function (CacheFactoryProvider) {
     angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });
   });
 
-uver.run(function($rootScope,$ionicPlatform,$ionicPopup,$ionicHistory,CacheFactory,geolocationService) {
+uver.run(function($state,$rootScope,$ionicPlatform,$ionicPopup,$ionicHistory,CacheFactory,geolocationService) {
+    
+    $rootScope.$on('$stateChangeStart', 
+      function(event, toState, toParams, fromState, fromParams){ 
+               if (toState.name.indexOf('login') > -1) {
+                // If logged out and transitioning to a logged in page:
+                var isLogin = localStorage.getItem('isLogin');
+                alert(isLogin);
+                if (isLogin !== 'undefined' && isLogin !== null) {
+                    event.preventDefault();
+                    $state.go('app.profile');
+                }
+              }  
+            //else if (toState.name.indexOf('public') > -1 && $cookies.Session) {
+            //    // If logged in and transitioning to a logged out page:
+            //    e.preventDefault();
+            //    $state.go('tool.suggestions');
+            //};
+        });
+
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
