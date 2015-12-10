@@ -1,9 +1,9 @@
 (function () {
     //'use strict';
 
-    angular.module('uver').controller('ritirieffappCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','serviceApi','GENERAL_CONFIG','ritiri','applicationLocalStorageService',ritirieffappCtrl]);
+    angular.module('uver').controller('mancatiritiriCtrl', ['$scope','$rootScope','$location','$http','$state','$timeout','$cordovaCamera','serviceApi','GENERAL_CONFIG','ritiri','applicationLocalStorageService',mancatiritiriCtrl]);
 
-    function ritirieffappCtrl($scope,$rootScope,$location,$http, $state, $timeout,$cordovaCamera,serviceApi,GENERAL_CONFIG,ritiri,applicationLocalStorageService) {
+    function mancatiritiriCtrl($scope,$rootScope,$location,$http, $state, $timeout,$cordovaCamera,serviceApi,GENERAL_CONFIG,ritiri,applicationLocalStorageService) {
     	 $scope.picAllow = true;
         $scope.currentuser = localStorage.getItem('users');
           $scope.currentuser = JSON.parse($scope.currentuser);
@@ -162,7 +162,7 @@ $scope.addImage = function() {
             "foto3": $scope.encodedImages[2],
             "entry_by": $rootScope.loginUsers[0].id,
             "id_stato":$scope.giacenza.statusSelect,
-            "note_rt_autisti": $scope.giacenza.note,
+            "note_mr_autisti": $scope.giacenza.note,
             "updated_at":"0000-00-00 00:00:00",
             "read":0,
              "lat": $rootScope.Latitude,

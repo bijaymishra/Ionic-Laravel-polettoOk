@@ -34,13 +34,13 @@ uver.config(function($stateProvider, $urlRouterProvider) {
     cache: false,
     url: '/ritira',
     templateUrl: 'app/ritiri/ritira.html',
-    controller: 'mancatiritiriCtrl'
+    controller: 'ritirieffappCtrl'
   })
     .state('app.rifiuta', {
     cache: false,
     url: '/rifiuta',
     templateUrl: 'app/ritiri/rifiuta.html',
-    controller: 'ritirieffappCtrl'
+    controller: 'mancatiritiriCtrl'
   })
     .state('app.view', {
     cache: false,
