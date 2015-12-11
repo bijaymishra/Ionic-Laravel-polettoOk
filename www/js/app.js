@@ -10,24 +10,20 @@ uver.config(function (CacheFactoryProvider) {
 
 uver.run(function($state,$rootScope,$ionicPlatform,$ionicPopup,$ionicHistory,CacheFactory,geolocationService) {
     
-    $rootScope.$on('$stateChangeStart', 
-      function(event, toState, toParams, fromState, fromParams){ 
-               if (toState.name.indexOf('login') > -1) {
-                // If logged out and transitioning to a logged in page:
-                var isLogin = localStorage.getItem('isLogin');
-                alert(isLogin);
-                if (isLogin !== 'undefined' && isLogin !== null) {
-                    event.preventDefault();
-                    $state.go('app.profile');
-                }
-              }  
-            //else if (toState.name.indexOf('public') > -1 && $cookies.Session) {
-            //    // If logged in and transitioning to a logged out page:
-            //    e.preventDefault();
-            //    $state.go('tool.suggestions');
-            //};
-        });
+    var protectedStates = ['app.login'];
 
+$rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
+     // See if state being transitioned needs to be access checked
+     if (protectedStates.indexOf(toState.name) > -1) {
+         var isLogin = localStorage.getItem('isLogin');
+                //alert(isLogin);
+                if (isLogin !== 'undefined' && isLogin !== null) {
+              // Prevent the current state from being changed
+              event.preventDefault();
+              $state.go('app.profile');       // go to home page or login page.
+         }
+     }
+});
 
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

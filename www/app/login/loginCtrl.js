@@ -35,15 +35,16 @@
 
   $scope.checkUser = function(userPassword,email){
       var password_attempt = userPassword;
-          $rootScope.loginUsers = _.filter($scope.userDetails, function(user) {
+          var loginUsers = [];
+          loginUsers = _.filter($scope.userDetails, function(user) {
                     return user.email == email ;
                 });
 
-          if($rootScope.loginUsers.length==1 && TwinBcrypt.compareSync(password_attempt, $rootScope.loginUsers[0].password)){
+          if(loginUsers.length==1 && TwinBcrypt.compareSync(password_attempt, loginUsers[0].password)){
 
             console.log("itsmatching");
              setTimeout(function() {//window.plugins.spinnerDialog.hide();
-             localStorage.setItem("currentUser",$rootScope.loginUsers);
+             localStorage.setItem("currentUser",JSON.stringify(loginUsers));
              localStorage.setItem("isLogin","true");
              $state.go('app.profile');
              }, 1000);

@@ -93,8 +93,8 @@ uver.config(function($stateProvider, $urlRouterProvider) {
   .state('app.profile', {
     cache: false,
     url: '/profile',
-    templateUrl: 'app/profile/profile.html',
-    controller: 'userCtrl'
+    templateUrl: 'app/profile/profile.html'
+    
   })
   .state('app.cancel', {
     cache: false,
