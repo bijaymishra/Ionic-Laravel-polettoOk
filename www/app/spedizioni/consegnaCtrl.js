@@ -9,7 +9,12 @@
           $scope.currentuser = JSON.parse($scope.currentuser);
           console.log($scope.currentuser);
 
-
+            var currentUser = localStorage.getItem('currentUser');
+          //alert(currentUser);
+          currentUser = JSON.parse(currentUser);
+          console.log(currentUser);
+          $scope.currentuserID = currentUser[0].id;
+          
       //consegna implemantation
       //serviceApi.getStatus()
         //    .then(function (response) {
@@ -106,7 +111,7 @@ $scope.addImage = function() {
             "foto1": $scope.encodedImages[0],
             "foto2": $scope.encodedImages[1],
             "foto3": $scope.encodedImages[2],
-            "entry_by": $rootScope.loginUsers[0].id,
+            "entry_by": $scope.currentuserID,
             "id_stato_consegna":$scope.giacenza.statusSelect,
             "note_cs_autista": $scope.giacenza.note,
             "updated_at":"0000-00-00 00:00:00",
