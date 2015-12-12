@@ -5,7 +5,7 @@
           ></ion-refresher>
       <ion-list ng-repeat = "item in ritiri.rows |filter: {'entry_by' : currentuserID}" can-frag="false">
         <ion-item class="item-remove-animate item-icon-right" ng-click="ritriview(item.id_ritiro);">
-          <h2>{{item.num_viaggio}}</h2>
+          <h2>{{item.numero_spedizione}}</h2>
           <p>{{item.rag_soc_mitt}}</p>
           <p>{{item.indirizzo_mitt}}</p>
           <p>{{item.localita_mitt}}</p>
