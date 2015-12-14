@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('uver').controller('spedizioniDetailsCtrl', ['$scope','$http','$state','$stateParams','serviceApi','GENERAL_CONFIG','spedizioni',spedizioniDetailsCtrl]);
+    angular.module('uver').controller('spedizioniDetailsCtrl', ['$scope','$rootScope','$location','$http','$state','$stateParams','serviceApi','GENERAL_CONFIG','spedizioni',spedizioniDetailsCtrl]);
 
-    function spedizioniDetailsCtrl($scope,$http, $state,$stateParams,serviceApi,GENERAL_CONFIG,spedizioni) {
+    function spedizioniDetailsCtrl($scope,$rootScope,$location,$http, $state,$stateParams,serviceApi,GENERAL_CONFIG,spedizioni) {
     	
 
     spedizioni.find($stateParams.spedizioniId, function(spedizioniDetail) {

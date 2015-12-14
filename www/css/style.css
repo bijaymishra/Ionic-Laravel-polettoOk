@@ -698,3 +698,6 @@ input:-ms-input-placeholder {
   background: #fc3c83;
   text-decoration: none;
 }
+.pull-right{
+  float: right;
+}

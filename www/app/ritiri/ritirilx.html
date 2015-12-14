@@ -6,52 +6,52 @@
           <label class="item item-input item-stacked-label">
             <i class="fa fa-user"></i>
             <span class="input-label">Numero spedizione</span>
-            <input type="text" placeholder="{{ritriDetails.numero_spedizione}}" readonly>
+            <input type="text" placeholder="{{ritiriDetails.numero_spedizione}}" readonly>
           </label>
           <label class="item item-input item-stacked-label">
             <i class="fa fa-industry"></i>
             <span class="input-label">Ragione sociale mittente</span>
-            <input type="text" placeholder="{{ritriDetails.localita_mitt}}" readonly>
+            <input type="text" placeholder="{{ritiriDetails.localita_mitt}}" readonly>
           </label>
           <label class="item item-input item-stacked-label">
             <i class="fa fa-map"></i>
             <span class="input-label">Inidirizzo mittente</span>
-            <input type="text" placeholder="{{ritriDetails.indirizzo_mitt}}" readonly>
+            <input type="text" placeholder="{{ritiriDetails.indirizzo_mitt}}" readonly>
           </label>
           <label class="item item-input item-stacked-label">
             <i class="fa fa-building"></i>
             <span class="input-label">Città</span>
-            <input type="text" placeholder="{{ritriDetails.numero_spedizione}}" readonly>
+            <input type="text" placeholder="{{ritiriDetails.numero_spedizione}}" readonly>
           </label>
           <label class="item item-input item-stacked-label">
             <i class="fa fa-globe"></i>
             <span class="input-label">Provincia</span>
-            <input type="text" placeholder="{{ritriDetails.provincia_mitt}}" readonly>
+            <input type="text" placeholder="{{ritiriDetails.provincia_mitt}}" readonly>
           </label>
           <label class="item item-input item-stacked-label">
             <i class="fa fa-phone"></i>
             <span class="input-label">Telefono</span>
-            <input type="text" placeholder="{{ritriDetails.numero_spedizione}}" readonly>
+            <input type="text" placeholder="{{ritiriDetails.numero_spedizione}}" readonly>
           </label>
           <label class="item item-input item-stacked-label">
             <i class="fa fa-cubes"></i>
             <span class="input-label">Numero colli</span>
-            <input type="text" placeholder="{{ritriDetails.colli}}" readonly>
+            <input type="text" placeholder="{{ritiriDetails.colli}}" readonly>
           </label>
           <label class="item item-input item-stacked-label">
             <i class="fa fa-pencil-square-o"></i>
             <span class="input-label">Note</span>
-            <input type="text" placeholder="{{ritriDetails.note}}" readonly>
+            <input type="text" placeholder="{{ritiriDetails.note}}" readonly>
           </label>
           <label class="item item-input item-stacked-label">
             <i class="fa fa-check"></i>
             <span class="input-label">Stato ritiro</span>
-            <input type="text" placeholder="{{ritriDetails.numero_spedizione}}" readonly>
+            <input type="text" placeholder="{{ritiriDetails.numero_spedizione}}" readonly>
           </label>
         </div>
         <br />
         <br />
-        <button ng-click="consegna(ritriDetails.id_ritiro);" class="button button-balanced">Consegna</button><button ng-click="giacenza(ritriDetails.id_ritiro);" class="button button-assertive">Rifiuta</button>
+        <button ng-click="ritirieff(ritiriDetails.id_ritiro);" class="button button-balanced">Consegna</button><button ng-click="mancatiritiri(ritiriDetails.id_ritiro);" class="button button-assertive pull-right">Rifiuta</button>
         
     </div>
   </ion-content>

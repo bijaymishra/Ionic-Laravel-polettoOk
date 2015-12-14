@@ -1,29 +1,29 @@
 (function () {
     'use strict';
 
-    angular.module('uver').controller('ritirilxCtrl', ['$scope','$http','$state','$stateParams','serviceApi','GENERAL_CONFIG','ritri',ritirilxCtrl]);
+    angular.module('uver').controller('ritirilxCtrl', ['$scope','$rootScope','$location','$http','$state','$stateParams','serviceApi','GENERAL_CONFIG','ritiri',ritirilxCtrl]);
 
-    function ritirilxCtrl($scope,$http, $state,$stateParams,serviceApi,GENERAL_CONFIG,ritri) {
+    function ritirilxCtrl($scope,$rootScope,$location,$http, $state,$stateParams,serviceApi,GENERAL_CONFIG,ritiri) {
     	
 
-    ritri.find($stateParams.retriId, function(retriDetail) {
-    $scope.ritriDetails = retriDetail;
+    ritiri.find($stateParams.retriId, function(retriDetail) {
+    $scope.ritiriDetails = retriDetail;
     console.log($scope.spedizioniDetails);
   });
 
-     $scope.giacenza = function(itemId){
-        ritri.find(itemId, function(retriDetail) {
-          $rootScope.spedizioniID = retriDetail.id_spedizione;
+     $scope.ritirieff = function(itemId){
+        ritiri.find(itemId, function(ritiriDetail) {
+          $rootScope.ritiriID = ritiriDetail.id_ritiro;
           });
-                 $location.path('/app/giacenza');
+                 $location.path('/app/ritira');
           
         
       };
-      $scope.consegna = function(itemId){
-          ritri.find(itemId, function(retriDetail) {
-          $rootScope.spedizioniID = retriDetail.id_spedizione;
+      $scope.mancatiritiri = function(itemId){
+          ritiri.find(itemId, function(ritiriDetail) {
+          $rootScope.ritiriID = ritiriDetail.id_ritiro;
           });
-                 $location.path('/app/consegna');
+                 $location.path('/app/rifiuta');
           
         
       };
