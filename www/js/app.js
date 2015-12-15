@@ -8,7 +8,7 @@ uver.config(function (CacheFactoryProvider) {
     angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });
   });
 
-uver.run(function($state,$rootScope,$ionicPlatform,$ionicPopup,$ionicHistory,CacheFactory,geolocationService) {
+uver.run(function($state,$rootScope,$ionicPlatform,$ionicPopup,$interval,$ionicHistory,CacheFactory,geolocationService) {
     
     var protectedStates = ['app.login'];
 
@@ -48,10 +48,33 @@ $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
         });
       }
     }
+    $interval(function (index) {
      geolocationService.getPosition()
     .then(function(position) {
        $rootScope.Latitude =position.coords.latitude;
          $rootScope.longitude =position.coords.longitude;
+           var data ={
+           
+                "lat": position.coords.latitude,
+                "long": position.coords.longitude,
+                "entry_by" : $rootScope.currentUSer
+            
+            };
+           
+         $http({
+            url: 'http://polettoweb.com/sximoapi?module=locate',
+            method: "POST",
+            data: data,
+            headers: {'Authorization': 'Basic '+'YXBwQHBvbGV0dG93ZWIuY29tOnB2aTNFei1EVVFWei1EdzNRYlEtVjk5Qkg'}
+        }).success(function (data, status, headers, config) {
+                $scope.data = data; // how do pass this to $scope.persons?
+                alert($scope.data);
+            }).error(function (data, status, headers, config) {
+                $scope.status = status;
+            });
+
+
+
     }, function(err) {
       var myPopup = $ionicPopup.show({
                      // template: '',
@@ -60,6 +83,7 @@ $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
                      buttons: [{ text: 'Close' }]
                  });
     });
+     }, 5000);
     $ionicPlatform.registerBackButtonAction(function (event) {
     
         if($ionicHistory.currentStateName() == "app.profile"){
