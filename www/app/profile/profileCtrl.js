@@ -1,34 +1,49 @@
 (function () {
     'use strict';
 
-    angular.module('uver').controller('loginController', ['$scope','$http','$state','serviceApi','GENERAL_CONFIG',loginController]);
+    angular.module('uver').controller('profileController', ['$scope','$rootScope','$http','$state','$interval','$ionicPopup','serviceApi','geolocationService','GENERAL_CONFIG',profileController]);
 
-    function loginController($scope,$http, $state,serviceApi,GENERAL_CONFIG) {
-    	 $http({method: 'GET', url: 'http://polettoweb.com/sximoapi?module=users', headers: {'Authorization': 'Basic '+'YXBwQHBvbGV0dG93ZWIuY29tOnB2aTNFei1EVVFWei1EdzNRYlEtVjk5Qkg'}})
-         .then(function (response) {
-         if (response == '204') {
-           $scope.loginError = true;
-        }
-         else {
-           $scope.users = response;
-           console.log($scope.users.data.rows[0]);
-           localStorage.setItem("users",response);
-         } 
-       });
+    function profileController($scope,$rootScope,$http, $state,$interval,$ionicPopup,serviceApi,geolocationService,GENERAL_CONFIG) {
+    var currentUser = localStorage.getItem('currentUser');
+          //alert(currentUser);
+          currentUser = JSON.parse(currentUser);
+          console.log(currentUser);
+          $scope.currentuserID = currentUser[0].id;
 
-    	$scope.doLogin = function(userPassword,email){
-        var password_attempt = userPassword;
-        
-  if ( TwinBcrypt.compareSync(password_attempt, "$2y$10$JhIsQC0fij701iKSiC.mk.tSHeOM6dbHjsvVf38uJmBh1eOTlSzxW")){
-   console.log("It matches");
-   $state.go("app.profile");
- }
-else{
-    console.log("It doe's not matches");
-  }
-  
-          
-  }; 
+     $interval(function (index) {
+     geolocationService.getPosition()
+    .then(function(position) {
+       $rootScope.Latitude =position.coords.latitude;
+         $rootScope.longitude =position.coords.longitude;
+           var data ={
+           
+                "lat": position.coords.latitude,
+                "long": position.coords.longitude,
+                "entry_by" : $scope.currentuserID
+            
+            };
+           
+         serviceApi.updatelocation(data)
+      .then(function (response) {
+          if (response == '204') {
+            console("please check your internet connection");
+          }
+          else {
+            console("location updated");
+          }
+        });
+
+
+
+    }, function(err) {
+      var myPopup = $ionicPopup.show({
+                     // template: '',
+                     // title: 'Terms',
+                     subTitle: "We cannot determine your location. To fix this, go to Location Settings and turn on location services for the PolettoOk app and restart.",
+                     buttons: [{ text: 'Close' }]
+                 });
+    });
+     }, 300000);
 }
 
 

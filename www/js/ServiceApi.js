@@ -6,6 +6,31 @@
     function serviceApi($http, $rootScope, $q, $ionicLoading, GENERAL_CONFIG) {
 
         // Common method to peroform post http call.
+        function doPostlocationHttp(functionName, url, data) {
+            var deferred = $q.defer();
+
+             $http(
+            {
+                method: 'POST',
+                url: url,
+                headers: {'Authorization': 'Basic YXBwQHBvbGV0dG93ZWIuY29tOnB2aTNFei1EVVFWei1EdzNRYlEtVjk5Qkg'},
+                data: data
+            })
+                .success(function (response) {
+                    console.log(functionName + " Success");
+
+                    busyCursorEnd();
+
+                    deferred.resolve(response);
+                }).error(function (error, status) {
+                    console.log(functionName + " Error :" + error);
+
+
+                    deferred.reject(error, status);
+                });
+
+            return deferred.promise;
+        };
         function doPostHttp(functionName, url, data) {
             var deferred = $q.defer();
 
@@ -198,8 +223,8 @@
             consegnaCtrl : consegnaCtrl,
             getRitiri : getRitiri,
             mancatiritiriCtrl : mancatiritiriCtrl,
-            ritirieffappCtrl : ritirieffappCtrl
-
+            ritirieffappCtrl : ritirieffappCtrl,
+            updatelocation : updatelocation
             
             };
 
@@ -271,7 +296,13 @@
             var data = {"data":data};
             return doPostHttp("ritirieffappCtrl", url, data);
         }
+         function updatelocation(data) {
+            var url = GENERAL_CONFIG.API_URL + 'sximoapi?module=locate'
 
+            // Create data for API call 
+            var data = {"data":data};
+            return doPostlocationHttp("updatelocation", url, data);
+        }
 
     }
 })();
