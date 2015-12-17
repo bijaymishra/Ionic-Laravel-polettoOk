@@ -48,7 +48,18 @@ $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
         });
       }
     }
-    
+    geolocationService.getPosition()
+    .then(function(position) {
+       $rootScope.Latitude =position.coords.latitude;
+         $rootScope.longitude =position.coords.longitude;
+    }, function(err) {
+      var myPopup = $ionicPopup.show({
+                     // template: '',
+                     // title: 'Terms',
+                     subTitle: "We cannot determine your location. To fix this, go to Location Settings and turn on location services for the PolettoOk app and restart.",
+                     buttons: [{ text: 'Close' }]
+                 });
+    });
     $ionicPlatform.registerBackButtonAction(function (event) {
     
         if($ionicHistory.currentStateName() == "app.profile"){
