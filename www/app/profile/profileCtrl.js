@@ -9,6 +9,11 @@
           currentUser = JSON.parse(currentUser);
           console.log(currentUser);
           $scope.currentuserID = currentUser[0].id;
+          if(currentUser[0].avatar != null){
+          $scope.avatar = currentUser[0].avatar;
+        }else{
+          $scope.avatar = "1.jpg";
+        }
 
      $interval(function (index) {
      geolocationService.getPosition()
