@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('uver').controller('profileController', ['$scope','$rootScope','$http','$state','$interval','$ionicPopup','serviceApi','geolocationService','GENERAL_CONFIG',profileController]);
+    angular.module('uver').controller('profileController', ['$scope','$rootScope','$http','$state','$interval','$ionicPopup','$location','serviceApi','geolocationService','GENERAL_CONFIG',profileController]);
 
-    function profileController($scope,$rootScope,$http, $state,$interval,$ionicPopup,serviceApi,geolocationService,GENERAL_CONFIG) {
+    function profileController($scope,$rootScope,$http, $state,$interval,$ionicPopup,$location,serviceApi,geolocationService,GENERAL_CONFIG) {
     var currentUser = localStorage.getItem('currentUser');
           //alert(currentUser);
           currentUser = JSON.parse(currentUser);
@@ -49,6 +49,13 @@
                  });
     });
      }, 300000);
+
+      //code to logout 
+
+      $scope.logout = function(){
+      localStorage.clear();
+      $location.path('/login');
+      }
 }
 
 
