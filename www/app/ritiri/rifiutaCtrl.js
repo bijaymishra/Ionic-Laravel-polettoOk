@@ -86,7 +86,7 @@
         } ;
         function getTimeStamp() {
        var now = new Date();
-       return ((now.getFullYear() + 1) + '-' + (now.getMonth()) + '-' + now.getDate() + " " + now.getHours() + ':'
+       return ((now.getFullYear()) + '-' + (now.getMonth()) + '-' + now.getDate() + " " + now.getHours() + ':'
                      + ((now.getMinutes() < 10) ? ("0" + now.getMinutes()) : (now.getMinutes())) + ':' + ((now.getSeconds() < 10) ? ("0" + now
                      .getSeconds()) : (now.getSeconds())));
 }
