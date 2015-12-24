@@ -18,7 +18,7 @@
      <label class="item item-input item-select" style="padding:0px">
                     <div class="input-label">Stato
                     </div>
-                   <select ng-model="giacenza.statusSelect">
+                   <select ng-model="giacenza.statusSelect" required>
   <option style="display:none" value="" >select a status</option>
 <option ng-repeat = "options in statusIds track by $index" value={{options.id_stato}}>{{options.nome_stato}}</option>
 </select>
@@ -39,7 +39,7 @@
         </ion-item>
         <br />
         <br />
-        <button type="submit" ng-click="withdrawlShipping();" class="button uver-btn">Consegna</button>
+        <button type="submit" ng-disabled="giacenzaData.$invalid" ng-click="withdrawlShipping();" class="button uver-btn">Consegna</button>
       </form>
     </div>
   </ion-content>

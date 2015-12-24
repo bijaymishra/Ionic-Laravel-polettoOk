@@ -127,6 +127,8 @@ $scope.addImage = function() {
           }
           else {
             alert("La spedizione è stata rifiutata");
+            $scope.spedizioni();
+            $rootScope.spedUpdate = true;
           }
         },
         function (err) {

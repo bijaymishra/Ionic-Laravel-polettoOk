@@ -186,6 +186,8 @@ $scope.addImage = function() {
           }
           else {
             alert("La spedizione è stata correttamente consegnata");
+            $scope.ritiri();
+            $rootScope.ritiUpdate = true;
           }
         },
         function (err) {

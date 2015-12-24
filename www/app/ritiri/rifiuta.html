@@ -23,7 +23,7 @@
   ng-options="options.id_stato as options.nomo_stato for options in statusIds" >
     <option style="display:none" value="">select a status</option>
 </select-->
-<select ng-model="giacenza.statusSelect">
+<select ng-model="giacenza.statusSelect" required>
   <option style="display:none" value="" >select a status</option>
 <option ng-repeat = "options in statusIds track by $index" value={{options.id_stato}}>{{options.nome_stato}}</option>
 </select>
@@ -48,7 +48,7 @@
      </ion-scroll>
         <br />
         <br />
-        <button type="submit" ng-click="rejectShipping();" class="button uver-btn">Rifiuta</button>
+        <button type="submit" ng-disabled="giacenzaData.$invalid" ng-click="rejectShipping();" class="button uver-btn">Rifiuta</button>
         </form>
     </div>
   </ion-content>

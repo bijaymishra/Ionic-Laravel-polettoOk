@@ -129,6 +129,8 @@ $scope.addImage = function() {
           }
           else {
             alert("La spedizione è stata correttamente consegnata");
+            $scope.spedizioni();
+            $rootScope.spedUpdate = true;
           }
         },
         function (err) {

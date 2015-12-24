@@ -183,6 +183,8 @@ $scope.addImage = function() {
           }
           else {
             alert("La spedizione è stata rifiutata");
+            $scope.ritiri();
+            $rootScope.ritiUpdate = true;
           }
         },
         function (err) {

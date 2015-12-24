@@ -21,6 +21,14 @@
      
   };
   
+  //this code will refresh after coming back to the list.
+     $scope.$on('$ionicView.enter', function(){
+        if($rootScope.ritiUpdate === true){
+          $scope.refreshRitiri();
+          $rootScope.ritiUpdate = false;
+        }
+    });
+
   if (!applicationLocalStorageService.checkKey('RitiriData')) {
              $scope.getRitiriDB();
         }else{

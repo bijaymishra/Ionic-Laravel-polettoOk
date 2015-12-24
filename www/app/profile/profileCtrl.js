@@ -4,6 +4,8 @@
     angular.module('uver').controller('profileController', ['$scope','$rootScope','$http','$state','$interval','$ionicPopup','$location','serviceApi','geolocationService','GENERAL_CONFIG',profileController]);
 
     function profileController($scope,$rootScope,$http, $state,$interval,$ionicPopup,$location,serviceApi,geolocationService,GENERAL_CONFIG) {
+    $rootScope.spedUpdate = false;
+    $rootScope.ritiUpdate = false;
     var currentUser = localStorage.getItem('currentUser');
           //alert(currentUser);
           currentUser = JSON.parse(currentUser);

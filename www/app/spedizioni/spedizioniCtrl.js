@@ -27,6 +27,14 @@
         }else{
           $scope.spedizioni = applicationLocalStorageService.getCache('SpedizioniData');
         }
+     //this code will refresh after coming back to the list.
+     $scope.$on('$ionicView.enter', function(){
+        if($rootScope.spedUpdate === true){
+          $scope.refreshSpediZioni();
+          $rootScope.spedUpdate = false;
+        }
+    });
+    
 
   $scope.refreshSpediZioni = function() {
 
